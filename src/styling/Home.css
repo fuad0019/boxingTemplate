@@ -1,0 +1,27 @@
+.custom-shape-divider-bottom-1690372955 {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    overflow: hidden;
+    line-height: 0;
+    transform: rotate(180deg);
+}
+
+.custom-shape-divider-bottom-1690372955 svg {
+    position: relative;
+    display: block;
+    width: calc(193% + 1.3px);
+    height: 224px;
+}
+
+.custom-shape-divider-bottom-1690372955 .shape-fill {
+    fill: #FFFFFF;
+}
+
+h1, .h1, h2, .ss-places-popular .start-search-item-level-0, .h2, h3, .h3, h4, .h4, h5, h6 {
+    font-weight: 700;
+    margin: 8px 0 6px 0;
+    line-height: 1.2;
+    font-family: "Open Sans",sans-serif,Arial;
+}
