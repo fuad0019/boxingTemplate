@@ -4,7 +4,7 @@ import TeamDetailSection, { Detail } from "../sections/DetailSection";
 import DetailSection from "../sections/DetailSection";
 import team from '../assets/images/team.jpeg';
 import match from '../assets/images/old-school-boxing-training-2.jpg';
-import MemberSection, { Member } from "../sections/memberSection";
+import MemberSection, { Member } from "../sections/MemberSection";
 import trainer1 from '../assets/images/trainer1.jpg'
 import trainer2 from '../assets/images/trainer2.jpg'
 import trainer3 from '../assets/images/trainer3.jpg'
