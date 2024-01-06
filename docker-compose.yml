@@ -1,0 +1,42 @@
+version: "3.3"
+services:
+  rtmp:
+    build: ./rtmp
+    ports:
+      - "443:443"
+      - "80:8080"
+
+    container_name: rmtp
+    depends_on:
+          - frontend
+        #  - frontend-app
+    restart: always
+
+#
+#  proxy:
+ #   build: ./proxy
+ #   ports:
+ #     - "8080:8080"
+#    container_name: proxy
+ #   depends_on:
+ #         - frontend
+        #  - frontend-app
+ #   restart: always
+
+
+  frontend:
+    build: ./
+    container_name: frontend
+    expose:
+          - "5173"
+    restart: always
+    environment:
+      PROXY_HOST: "172.19.0.2"
+    volumes:
+      - ./:/usr/src/app
+
+
+
+
+
+
