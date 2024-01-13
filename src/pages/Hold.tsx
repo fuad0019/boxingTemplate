@@ -29,7 +29,7 @@ function Hold() {
     const teams: Detail[] = [
         {
             title: 'BOXING',
-            description:  'Bokseprogrammet hos [Klubbens Navn] fokuserer på alle aspekter af sporten – fra grundlæggende teknikker til avancerede taktikker. Det er ideelt for både nybegyndere og erfarne boksere. Vores erfarne trænere, mange af dem tidligere konkurrenceboksere, sikrer, at du lærer de rigtige teknikker og kombinationer.' + "\n" + "\n" + "Træningen omfatter slagteknikker, fodarbejde, forsvar og konditionering. Vi lægger også vægt på bokserelateret fitness og mental forberedelse. Vores mål er at bygge kæmpere, der ikke kun er fysisk forberedt, men også taktisk og mentalt stærke.",
+            description:  'Bokseprogrammet hos Gorilla MMA fokuserer på alle aspekter af sporten – fra grundlæggende teknikker til avancerede taktikker. Det er ideelt for både nybegyndere og erfarne boksere. Vores erfarne trænere, mange af dem tidligere konkurrenceboksere, sikrer, at du lærer de rigtige teknikker og kombinationer.' + "\n" + "\n" + "Træningen omfatter slagteknikker, fodarbejde, forsvar og konditionering. Vi lægger også vægt på bokserelateret fitness og mental forberedelse. Vores mål er at bygge kæmpere, der ikke kun er fysisk forberedt, men også taktisk og mentalt stærke.",
             image: boxingTraining2,
         },
         {

@@ -40,9 +40,7 @@ export default function ContactSection() {
                     <Typography>
                         Denmark
                     </Typography>
-                    <Typography>
-                        CVR: 1455524343
-                    </Typography>
+             
                 </div>
 
             )
@@ -63,9 +61,7 @@ export default function ContactSection() {
                     <Typography>
                         Denmark
                     </Typography>
-                    <Typography>
-                        CVR: 1455524343
-                    </Typography>
+             
                 </div>
             )
         }

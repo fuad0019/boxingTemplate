@@ -12,8 +12,8 @@ function Copyright() {
     return (
         <Typography variant="body2" color="white">
             {'Copyright © '}
-            <Link color="inherit" href="https://mui.com/">
-                Your Website
+            <Link color="inherit" href="https://boxingzi.com/">
+            boxingzi
             </Link>{' '}
             {new Date().getFullYear()}
             {'.'}
@@ -42,9 +42,7 @@ export default function FooterSection() {
                     <Typography>
                         Denmark
                     </Typography>
-                    <Typography>
-                        CVR: 1455524343
-                    </Typography>
+                 
                 </div>
 
             )
@@ -65,9 +63,7 @@ export default function FooterSection() {
                     <Typography>
                         Denmark
                     </Typography>
-                    <Typography>
-                        CVR: 1455524343
-                    </Typography>
+               
                 </div>
             )
         }

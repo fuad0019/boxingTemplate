@@ -5,7 +5,7 @@ import L from 'leaflet';
 import { Typography } from '@mui/material';
 
 const MapComponent = () => {
-    const position = [51.505, -0.09]; // Latitude and Longitude
+    const position = [56.15, 10.22]; // Latitude and Longitude
 
     return (
 
