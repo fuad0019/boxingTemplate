@@ -45,7 +45,7 @@ function MapSection() {
             <Grid textAlign={'center'} alignItems={'center'} justifyContent={'center'} height={'50vh'} width={'50vw'} direction={'column'}>
                 <MapComponent></MapComponent>
                 <Typography variant="body1" component="div" color={"white"} marginTop={'10px'}>
-                    Ramsansvej 230
+                Sankt Anna Gade
                 </Typography>
 
             </Grid>

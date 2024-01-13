@@ -29,13 +29,13 @@ export default function ContactSection() {
             content: (
                 <div style={{ color: 'white' }} >
                     <Typography>
-                        Ramsasvej 230
+                        Sankt Anna Gade
                     </Typography>
                     <Typography>
                         Tlf: 55 55 55 55
                     </Typography>
                     <Typography>
-                        6000 Århus
+                        8000 Århus
                     </Typography>
                     <Typography>
                         Denmark
