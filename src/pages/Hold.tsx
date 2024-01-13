@@ -1,12 +1,12 @@
 import IntroSection from "../sections/IntroSection";
 import ScheduleSection from "../sections/ScheduleSection";
 import TeamDetailSection, { Detail } from "../sections/DetailSection";
-import boxingTraining from '../assets/images/boxingtraining3.jpeg'
+import boxingTraining from '../assets/images/boxingtraining3.jpg'
 import { useLocation, useNavigate } from 'react-router-dom';
 import {useEffect } from 'react';
 import DetailSection from "../sections/DetailSection";
 import boxingTraining2 from '../assets/images/boxingtraining2.jpg';
-import crossfit from '../assets/images/crossfit.jpeg';
+import crossfit from '../assets/images/crossfit.jpg';
 
 
 function Hold() {
@@ -29,12 +29,13 @@ function Hold() {
     const teams: Detail[] = [
         {
             title: 'BOXING',
-            description:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nesciunt deleniti doloribus veniam eius explicabo, incidunt itaque quasi nobis consequatur. Delectus nulla provident, culpa adipisci ut ipsa est aperiam molestiae.', 
+            description:  'Bokseprogrammet hos [Klubbens Navn] fokuserer på alle aspekter af sporten – fra grundlæggende teknikker til avancerede taktikker. Det er ideelt for både nybegyndere og erfarne boksere. Vores erfarne trænere, mange af dem tidligere konkurrenceboksere, sikrer, at du lærer de rigtige teknikker og kombinationer.' + "\n" + "\n" + "Træningen omfatter slagteknikker, fodarbejde, forsvar og konditionering. Vi lægger også vægt på bokserelateret fitness og mental forberedelse. Vores mål er at bygge kæmpere, der ikke kun er fysisk forberedt, men også taktisk og mentalt stærke.",
             image: boxingTraining2,
         },
         {
             title: 'CROSSFIT',
-            description:  'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quas nesciunt deleniti doloribus veniam eius explicabo, incidunt itaque quasi nobis consequatur. Delectus nulla provident, culpa adipisci ut ipsa est aperiam molestiae.',
+            description:  'Vores Crossfit-program er bygget op omkring en filosofi om alsidig fitness. Det er perfekt for dem, der ønsker at forbedre deres generelle fysik, få mere energi og øge deres styrke. Vores certificerede Crossfit-trænere guider dig gennem en bred vifte af funktionelle bevægelser udført ved høj intensitet.' + "\n" + "\n" + "Træningen inkluderer vægtløftning, gymnastik og konditionsøvelser, der alle kan skaleres for at passe til enhver fitnessniveau. Vores fællesskab er stærkt og støttende, og vi fejrer hver enkelt medlems fremskridt.",
+
             image: crossfit,
         }
 
@@ -44,7 +45,7 @@ function Hold() {
         <div >
 
             <div style={{ marginBottom: 100 }}>
-            <IntroSection title="VÆLG DIT HOLD" description="Se en række af de hold vi tilbyder" image={boxingTraining} backgroundPosition="25% 35%"></IntroSection>
+            <IntroSection title="VÆLG DIT HOLD" description="Se en række af de hold vi tilbyder" image={boxingTraining} backgroundPosition="25% 45%"></IntroSection>
 
             </div>
 

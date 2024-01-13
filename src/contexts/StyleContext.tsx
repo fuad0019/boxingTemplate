@@ -3,6 +3,7 @@ import { createContext, ReactNode } from 'react';
 import styles from '../styling/HeroSection.module.scss';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
+import useNavigateHook from '../hooks/navigateHook';
 
 
 interface StyleContextProps {
@@ -63,6 +64,18 @@ theme.typography.h3 = {
 };
 
 
+theme.typography.h6 = {
+    fontSize: '0.5rem', // default size
+    [theme.breakpoints.up('xs')]: {
+        fontSize: '1rem', // size at the 'sm' breakpoint
+    },
+    [theme.breakpoints.up('md')]: {
+        fontSize: '1.2rem', // size at the 'md' breakpoint
+    },
+    // Add more breakpoints as needed
+};  
+
+
 export const styleContext = createContext({
 
 });
@@ -74,7 +87,7 @@ export default function StyleContext({ children }: StyleContextProps) {
 
 
     return (
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={theme} >
             {children}
 
         </ThemeProvider>

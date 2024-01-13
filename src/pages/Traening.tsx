@@ -10,7 +10,7 @@ function Traening() {
         <div >
 
             <div style={{ marginBottom: 100}}>
-            <IntroSection title="Træningstider" description="Se hvornår vi træner i klubben" image={boxingTraining} backgroundPosition="25% 80%"></IntroSection>
+            <IntroSection title="Træningstider" description="Se hvornår vi træner i klubben" image={boxingTraining} backgroundPosition="25% 40%"></IntroSection>
 
             </div>
 

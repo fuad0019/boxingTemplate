@@ -45,7 +45,7 @@ function ScheduleSection() {
                     SKEMA
                 </Typography>
 
-                <Typography variant="h5" component="div" color={"white"}>
+                <Typography variant="h6" component="div" color={"white"}>
                     Se hvornår vores hold træner
                 </Typography>
             </div>

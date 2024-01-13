@@ -26,7 +26,8 @@ export default function MemberCard({ member }: MemberCardProp) {
             position: 'relative',
             width: '100%',
 
-            minHeight: { md: 425, xs: 325 },
+            maxHeight: { md: 300, xs: 200 },
+
 
         }}>
 
@@ -35,9 +36,12 @@ export default function MemberCard({ member }: MemberCardProp) {
                 component='img'
                 sx={{
                     width: '100%',
-                    minHeight: { md: 325, xs: 225 },
+                    maxHeight: { md: 300, xs: 200 },
                     objectFit: 'cover',
-                    borderRadius: 2
+                    borderRadius: 2,
+                    objectPosition: '20% 20%' // Equivalent to 'background-position' in CSS
+       
+
                 }}
                 image={member.image}
             />
@@ -47,7 +51,7 @@ export default function MemberCard({ member }: MemberCardProp) {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                top: { md: 275, xs: 175 }
+                top: { md: 190, xs: 75 }
 
 
             }}>

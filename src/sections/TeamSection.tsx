@@ -45,7 +45,7 @@ function TeamSection({ teams }: TeamProps) {
                     VÆLG DIT HOLD
                 </Typography>
 
-                <Typography variant="h5" component="div" color={"white"}>
+                <Typography variant="h6" component="div" color={"white"}>
                     Se en række af de hold vi tilbyder
                 </Typography>
             </div>

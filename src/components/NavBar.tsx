@@ -15,9 +15,10 @@ import Logo from '../assets/images/logo.png'
 import FacebookIcon from '@mui/icons-material/Facebook';
 import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
-import { useNavigate } from 'react-router-dom';
+import useNavigateHook from '../hooks/navigateHook';
 
-
+import { useLocation } from 'react-router-dom';
+import { useNavigatorContext } from '../contexts/NavigateContext';
 
 
 export interface Page {
@@ -31,23 +32,18 @@ export interface Page {
 
 
 
+
+
 function ResponsiveAppBar() {
 
-  const [pages, setPages] = useState([{ path: '/', title: 'Hjem', state: '', active: true }, { path: '/Træningstider', title: 'Træningstider', state: 'Student', active: false }, { path: '/Hold', title: 'Hold', state: 'Professional', active: false }, { path: '/Om', title: 'Klubben', state: '', active: false }, { path: '/Kontakt', title: 'Kontakt', state: '', active: false }]);
+  const { navigateToPage, findPageByPath, pages, setActivePage } = useNavigatorContext();
+
+
+
   const socialsURL = { facebook: '', instagram: '', twitter: '' }
 
-  const navigateToPage = (selectedPage: Page) => {
+  const location = useLocation();
 
-    let newPages = pages.map((page) =>
-      page.title == selectedPage.title ? { ...page, active: true } : { ...page, active: false }
-    )
-    setPages(newPages)
-
-    navigate(selectedPage.path, { state: selectedPage.state })
-
-  }
-
-  const navigate = useNavigate();
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
   const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
@@ -55,25 +51,34 @@ function ResponsiveAppBar() {
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
   };
-  const handleOpenUserMenu = (event: React.MouseEvent<HTMLElement>) => {
-    setAnchorElUser(event.currentTarget);
-  };
+
 
   const handleCloseNavMenu = (page?: Page) => {
     setAnchorElNav(null);
-    if(page){
-      navigateToPage(page) 
+    if (page) {
+      navigateToPage(page)
 
     }
   };
 
-  const handleCloseUserMenu = () => {
-    setAnchorElUser(null);
-  };
+
+
 
 
   useEffect(() => {
 
+    let pathname = location.pathname
+    console.log(pathname)
+
+    let page = findPageByPath(pathname)
+
+
+
+
+
+
+
+    setActivePage(page)
 
 
   }, [])
@@ -81,18 +86,19 @@ function ResponsiveAppBar() {
   return (
     <AppBar position='static' sx={{ backgroundColor: '#091117', color: 'white' }}>
       <Container maxWidth="xl" >
-        <Toolbar disableGutters style={{ display: 'flex', justifyContent: 'space-between', padding: '0 10vw'}}>
+        <Toolbar disableGutters style={{ display: 'flex', justifyContent: 'space-between', padding: '0 10vw' }}>
           <Box display={'flex'} flexDirection={'row'} alignItems={'center'} >
-            <Button sx={{ marginRight: '7%', paddingBottom: '1%', }}>
-              <img src={Logo} height={'50px'} width={'50px'} />
+            <Button sx={{ marginRight: '7%', }} onClick={() => { navigateToPage(findPageByPath('/')) }}>
+              <img src={Logo} height={40} width={40} />
 
             </Button>
             <Typography display={{ xs: 'none', md: 'flex' }} variant='body1' style={{ whiteSpace: 'nowrap', color: "white", fontWeight: "bold" }} >GORILLA MMA</Typography>
           </Box>
 
 
+          <Typography display={{ xs: 'flex', md: 'none' }} variant='body1' style={{ whiteSpace: 'nowrap', color: "white", fontWeight: "bold" }} >GORILLA MMA</Typography>
 
-          <Box sx={{  display: { xs: 'flex', md: 'none' } }}>
+          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
             <IconButton
               size="large"
               aria-label="account of current user"
@@ -122,14 +128,14 @@ function ResponsiveAppBar() {
               }}
             >
               {pages.map((page) => (
-                <MenuItem key={page.title} onClick={()=>{handleCloseNavMenu(); navigateToPage(page)}}>
+                <MenuItem key={page.title} onClick={() => { handleCloseNavMenu(); navigateToPage(page) }}>
                   <p style={{ textAlign: "center" }} >{page.title}</p>
                 </MenuItem>
               ))}
             </Menu>
           </Box>
 
-    
+
 
           <Box sx={{ display: { xs: 'none', md: 'flex' }, alignContent: 'end', flexDirection: 'row', gap: '20px' }}>
             {pages.map((page) => (

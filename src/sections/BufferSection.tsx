@@ -78,7 +78,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                                 {title}
                             </Typography>
 
-                            <Typography variant="h5" fontSize={{ md: '1rem', xs: '0.8rem' }} component="div" color={"white"} textAlign={'center'}>
+                            <Typography variant="h6" fontSize={{ md: '1rem', xs: '0.8rem' }} component="div" color={"white"} textAlign={'center'}>
                                 Hjemstedet for profesionelle og amatør boksere i 30 år. Gorilla MMA har produceret Landsholdskæmpere og kvalitets fighters siden begyndelsen. Klubbens principper og karakter kan mærkes i dens kultur. Vind eller forsvind.
                             </Typography>
                         </div>

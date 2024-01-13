@@ -71,7 +71,7 @@ function IntroSection({ title, description, image, backgroundPosition }: IntroPr
                             {title}
                         </Typography>
 
-                        <Typography variant="h5" component="div" color={"white"}>
+                        <Typography variant="h6" component="div" color={"white"}>
                             {description}
                         </Typography>
                     </div>

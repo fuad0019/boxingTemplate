@@ -72,8 +72,10 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
 
               <Grid xs={'12'} md={'6'} >
-                <p className={styles.highlights1}  >
-                  Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus, rem sunt. Cumque quibusdam sequi fugit sint, inventore aperiam exercitationem laborum architecto vero, libero blanditiis hic quia quasi provident, quam qui.
+                <p className={styles.highlights1}>
+                  Her er de ægte fighters. Vi er en lokal klub i århus som er hjemstedet for ægte fighters. Vi tilbyder en række kampsportshold og både på elite og begynder niveau.
+
+                                  
                 </p>
               </Grid>
 

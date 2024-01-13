@@ -73,7 +73,7 @@ function MemberSection({ members }: MemberProps) {
                         Holdet
                     </Typography>
 
-                    <Typography variant="h5" component="div" color={"white"}>
+                    <Typography variant="h6" component="div" color={"white"}>
                         Se dine trænere og klub-ansvarlige
                     </Typography>
                 </div>
