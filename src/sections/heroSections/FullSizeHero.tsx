@@ -56,7 +56,7 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
   return (
 
-    <div className="hero" style={{ padding: 60, backgroundImage: `url(${mmaImages[index]})`, transition: 'background-image 1s ease-in', width: '100%', height: '100vh' }}>
+    <div className="hero" style={{backgroundPosition: '25% 75%' ,padding: 60, backgroundImage: `url(${mmaImages[index]})`, transition: 'background-image 1s ease-in', width: '100%', height: '100vh' }}>
       <Box className="hero-overlay" style={{ backgroundColor: themer.palette.primary.main, opacity: 0.2 }}>
 
       </Box>

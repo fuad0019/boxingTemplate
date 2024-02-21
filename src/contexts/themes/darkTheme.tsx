@@ -9,7 +9,7 @@ const darkTheme = {
     },
     text: {
       primary: '#FFFFFF',
-      secondary: '#C0C0C0',
+      secondary: '#FFFFFF',
       button: '#000000'
     },
   

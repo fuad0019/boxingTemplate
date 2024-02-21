@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import mmaImage1 from '../../assets/images/IMMAF.jpg'
-import mmaImage2 from '../../assets/images/IMMAF2.jpg'
-import mmaImage3 from '../../assets/images/IMMAF3.jpg'
+import darkRoom from '../../assets/images/darkRoom.jpg'
+
 import '../../styling/HeroSection.css'
 import cn from 'classnames';
 import NURSE from '../assets/images/nurse.png'
@@ -24,11 +23,7 @@ interface HeroSectionProps {
 
 function HeroSection({ scrollTo }: HeroSectionProps) {
 
-    let mmaImages: string[] = [
-        mmaImage1,
-        mmaImage2,
-        mmaImage3
-    ]
+ 
     const { themer } = useStyleContext();
 
 
@@ -40,23 +35,18 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
     const [index, setIndex] = useState(0);
 
     // Function to advance to the next image
-    const nextImage = () => {
-        setIndex((prevIndex) => (prevIndex + 1) % mmaImages.length);
-    };
+
 
     // Effect to cycle through images every 5 seconds
 
 
-    useEffect(() => {
-        const intervalId = setInterval(nextImage, 8000); // 5000 milliseconds = 5 seconds
-        return () => clearInterval(intervalId); // Cleanup the interval on component unmount
-    }, []);
 
     // const styles =useContext(styleContext);
 
     return (
 
-        <div className="hero" style={{ padding: 60, width: '100%', height: '100vh', position: 'relative' }}>
+        <div className="hero" style={{ padding: 60, width: '100%', height: '100vh', position: 'relative', backgroundImage: `url(${darkRoom})` }}    
+        >
 
 
             <Box className="hero-overlay" style={{ backgroundColor: themer.palette.primary.main, opacity: 0.2 }}>
@@ -72,7 +62,7 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
                         <Grid md={12}>
 
-                            <Typography style={{ whiteSpace: 'pre-line', lineHeight: 0.7 }} color={themer.palette.text.primary} variant='h1'>{'START DIN\nKAMPSPORTS\nREJSE IDAG'}</Typography>
+                            <Typography style={{ whiteSpace: 'pre-line', lineHeight: 0.7 }} fontFamily={'Kanit'} color={themer.palette.text.primary} variant='h1'>{'START DIN\nKAMPSPORTS\nREJSE IDAG'}</Typography>
 
                         </Grid>
 

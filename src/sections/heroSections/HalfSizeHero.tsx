@@ -80,8 +80,8 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
 
                                     <Grid container direction={'column'} >
-                                        <Typography marginLeft={'3px'} variant="overline" fontWeight={700} color={themer.palette.accent.main}>Kampsports Klub</Typography>
-                                        <Typography lineHeight={1.2} color={themer.palette.text.primary} variant='h1'>GORILLA</Typography>
+                                        <Typography  marginLeft={'3px'} variant="overline" fontWeight={700} color={themer.palette.accent.main}>Kampsports Klub</Typography>
+                                        <Typography fontFamily={'Arvo, sans-serif'} lineHeight={1.2} color={themer.palette.text.primary} variant='h1'>GORILLA</Typography>
                                         <Typography lineHeight={1.2} color={themer.palette.text.primary} variant='h1'>MMA</Typography>
 
                                     </Grid>
