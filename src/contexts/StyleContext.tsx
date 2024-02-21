@@ -20,7 +20,6 @@ const theme = createTheme(themer);
 
 theme.typography.h1 = {
     fontSize: '4rem', // default size
-    fontFamily: 'Kanit, sans-serif',
 
     [theme.breakpoints.up('xs')]: {
         fontSize: '4rem', // size at the 'sm' breakpoint
