@@ -71,8 +71,8 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
 
               <Grid container direction={'column'} >
-                <Typography color={themer.palette.text.primary} variant='h1'>GORILLA</Typography>
-                <Typography color={themer.palette.text.primary} variant='h1'>MMA</Typography>
+                <Typography fontFamily={'Libre Franklin'} color={themer.palette.text.primary} variant='h1'>GORILLA</Typography>
+                <Typography fontFamily={'Libre Franklin'} color={themer.palette.text.primary} variant='h1'>MMA</Typography>
               </Grid>
 
 

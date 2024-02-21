@@ -5,16 +5,16 @@ const darkTheme = {
       main: '#000000', // Example color
     },
     secondary: {
-      main: '#412728', // Example color
+      main: '#303030', // Example color
     },
     text: {
       primary: '#FFFFFF',
       secondary: '#FFFFFF',
-      button: '#000000'
+      button: '#FFFFFF'
     },
   
     accent: {
-      main: '#B87C4C'
+      main: '#2F4858'
 
     }
 

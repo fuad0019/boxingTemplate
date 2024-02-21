@@ -4,6 +4,7 @@ import { Team } from '../sections/TeamSection';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Member } from '../sections/memberSection';
+import { useStyleContext } from '../contexts/StyleContext';
 
 
 interface MemberCardProp {
@@ -14,6 +15,7 @@ interface MemberCardProp {
 export default function MemberCard({ member }: MemberCardProp) {
 
     const navigate = useNavigate();
+    const { themer } = useStyleContext();
 
 
     const [isHovered, setIsHovered] = useState(false);
@@ -59,8 +61,8 @@ export default function MemberCard({ member }: MemberCardProp) {
          
 
             }}>
-                <Paper sx={{ padding: '7% 5%', textAlign: 'left', backgroundColor: 'white', color: 'black',  }} elevation={2}>
-                    <Typography gutterBottom variant="body1" component="div" fontWeight={600}>
+                <Paper sx={{ padding: '7% 5%', textAlign: 'left', backgroundColor: themer.palette.secondary.main, color: 'black',  }} elevation={2}>
+                    <Typography gutterBottom variant="body1" component="div" fontWeight={600} color='text.primary'>
                         {member.name}
                     </Typography>
                     <Typography variant="body2" color='text.secondary' >
