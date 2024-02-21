@@ -72,7 +72,7 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
 
                         <Grid md={12}>
 
-                            <Typography style={{ whiteSpace: 'pre-line', lineHeight: 0.7 }} color={themer.palette.text.primary} variant='h1'>{'LEARN THE\nART & BUSINESS\nOF WEB DESIGN'}</Typography>
+                            <Typography style={{ whiteSpace: 'pre-line', lineHeight: 0.7 }} color={themer.palette.text.primary} variant='h1'>{'START DIN\nKAMPSPORTS\nREJSE IDAG'}</Typography>
 
                         </Grid>
 
