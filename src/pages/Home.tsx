@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 import TeamSection from '../sections/TeamSection';
 import { Team } from '../sections/TeamSection';
-import HeroSection from '../sections/heroSections/FullSizeHero';
+import HeroSection from '../sections/heroSections/FullTextHero';
 
 
 import boxingImage from '../assets/images/boxingtraining.jpg';
