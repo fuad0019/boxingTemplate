@@ -2,13 +2,14 @@ import { Box, Grid, Typography, useTheme } from "@mui/material";
 import PositionCard from "../components/PositionsCards";
 import FadeIn from "../components/FadeIn";
 import TeamCard from "../components/TeamCard";
+import { useStyleContext } from "../contexts/StyleContext";
 
 
 export interface IntroProp {
 
     title: string,
     description: string,
-    image ?: string
+    image?: string
     backgroundPosition?: string
 }
 
@@ -17,6 +18,8 @@ export interface IntroProp {
 
 function IntroSection({ title, description, image, backgroundPosition }: IntroProp) {
     const theme = useTheme();
+
+    const {themer} = useStyleContext();
 
 
     return (
@@ -29,14 +32,14 @@ function IntroSection({ title, description, image, backgroundPosition }: IntroPr
 
 
         }}>
-          <div style={{
+            <div style={{
                 backgroundImage: `url(${image})`,
-                backgroundPosition: backgroundPosition? backgroundPosition : 'center' ,
+                backgroundPosition: backgroundPosition ? backgroundPosition : 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 height: '100%',
                 width: 'auto'
-   
+
 
             }}>
 
@@ -48,12 +51,29 @@ function IntroSection({ title, description, image, backgroundPosition }: IntroPr
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: 'rgba(0, 0, 0, 0.7)',
+                backgroundColor: 'black',
+                opacity: 0.5,
+                height: '100&',
+                width: 'auto'
+
+            }}>
+
+
+
+
+
+            </div>
+
+            <div style={{
                 display: 'flex',
                 justifyContent: 'center',
                 alignItems: 'center',
-                color: 'white',
-                textAlign: 'center'
+                textAlign: 'center',
+                position: 'absolute',
+                top: 0,
+                left: 0,
+                right: 0,
+                bottom: 0,
             }}>
 
 
@@ -65,22 +85,23 @@ function IntroSection({ title, description, image, backgroundPosition }: IntroPr
                         justifyContent: 'center',
                         alignItems: 'center',
                         flexDirection: 'column',
+                        height: '100%',
 
                     }}>
-                        <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={"white"}>
+                        <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.secondary}>
                             {title}
                         </Typography>
 
-                        <Typography variant="h6" component="div" color={"white"}>
+                        <Typography variant="h6" component="div" color={themer.palette.text.secondary}>
                             {description}
                         </Typography>
                     </div>
 
                 </FadeIn>
-
-
             </div>
+
         </div>
+
 
 
 

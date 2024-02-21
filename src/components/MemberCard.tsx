@@ -24,9 +24,13 @@ export default function MemberCard({ member }: MemberCardProp) {
         <Card elevation={0} sx={{
             backgroundColor: 'rgba(255, 255, 255, 0.0)', // Semi-transparent white background
             position: 'relative',
-            width: '100%',
-
-            maxHeight: { md: 300, xs: 200 },
+            width: {md: '35vh' , sm:'30vh',xs:'25vh'},
+            minWidth: 200,
+            height: {md: '50vh',sm: '40vh',xs: '45vh'},
+            minHeight: 250,
+            justifyContent: 'center',
+            display: 'flex',
+            flexDirection: 'row'
 
 
         }}>
@@ -35,13 +39,13 @@ export default function MemberCard({ member }: MemberCardProp) {
             <CardMedia
                 component='img'
                 sx={{
-                    width: '100%',
-                    maxHeight: { md: 300, xs: 200 },
+                    width: {md: '35vh', sm:'30vh',  xs:'25vh'},
+                    minWidth: 180,
+                    height: {md: '40vh',sm: '35vh', xs:'35vh'},
+                    minHeight: 210,     
                     objectFit: 'cover',
                     borderRadius: 2,
                     objectPosition: '20% 20%' // Equivalent to 'background-position' in CSS
-       
-
                 }}
                 image={member.image}
             />
@@ -51,11 +55,11 @@ export default function MemberCard({ member }: MemberCardProp) {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                top: { md: 190, xs: 75 }
-
+                top: '68%',
+         
 
             }}>
-                <Paper sx={{ padding: '7% 5%', textAlign: 'left', backgroundColor: 'white', color: 'black' }} elevation={2}>
+                <Paper sx={{ padding: '7% 5%', textAlign: 'left', backgroundColor: 'white', color: 'black',  }} elevation={2}>
                     <Typography gutterBottom variant="body1" component="div" fontWeight={600}>
                         {member.name}
                     </Typography>

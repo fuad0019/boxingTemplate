@@ -15,6 +15,7 @@ import './styling/style.css'
 import Traening from './pages/Traening';
 import About from './pages/About';
 import ScrollToTop from './components/ScrollToTop';
+import StyleContext from './contexts/StyleContext';
 
 function App() {
   const [count, setCount] = useState(0)
@@ -23,6 +24,8 @@ function App() {
   return (
     <BrowserRouter>
     <ScrollToTop/>
+    <StyleContext>
+
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
@@ -33,6 +36,7 @@ function App() {
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>
+    </StyleContext>
   </BrowserRouter>
   )
 }

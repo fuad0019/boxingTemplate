@@ -19,6 +19,9 @@ import useNavigateHook from '../hooks/navigateHook';
 
 import { useLocation } from 'react-router-dom';
 import { useNavigatorContext } from '../contexts/NavigateContext';
+import { Slide, useScrollTrigger } from '@mui/material';
+import ElevationScroll from './navbar-components/ElevationScroll';
+import { useStyleContext } from '../contexts/StyleContext';
 
 
 export interface Page {
@@ -34,11 +37,11 @@ export interface Page {
 
 
 
-function ResponsiveAppBar() {
+function ResponsiveAppBar(props: Props) {
 
   const { navigateToPage, findPageByPath, pages, setActivePage } = useNavigatorContext();
 
-
+  const { children, window } = props
 
   const socialsURL = { facebook: '', instagram: '', twitter: '' }
 
@@ -46,7 +49,16 @@ function ResponsiveAppBar() {
 
 
   const [anchorElNav, setAnchorElNav] = useState<null | HTMLElement>(null);
-  const [anchorElUser, setAnchorElUser] = useState<null | HTMLElement>(null);
+
+
+  const trigger = useScrollTrigger({
+    disableHysteresis: true,
+    threshold: 0,
+    target: window ? window() : undefined
+  });
+
+
+
 
   const handleOpenNavMenu = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorElNav(event.currentTarget);
@@ -62,6 +74,7 @@ function ResponsiveAppBar() {
   };
 
 
+  const { themer } = useStyleContext();
 
 
 
@@ -83,89 +96,106 @@ function ResponsiveAppBar() {
 
   }, [])
 
+
+
+
+
   return (
-    <AppBar position='static' sx={{ backgroundColor: '#091117', color: 'white' }}>
-      <Container maxWidth="xl" >
-        <Toolbar disableGutters style={{ display: 'flex', justifyContent: 'space-between', padding: '0 10vw' }}>
-          <Box display={'flex'} flexDirection={'row'} alignItems={'center'} >
-            <Button sx={{ marginRight: '7%', }} onClick={() => { navigateToPage(findPageByPath('/')) }}>
-              <img src={Logo} height={40} width={40} />
-
-            </Button>
-            <Typography display={{ xs: 'none', md: 'flex' }} variant='body1' style={{ whiteSpace: 'nowrap', color: "white", fontWeight: "bold" }} >GORILLA MMA</Typography>
-          </Box>
 
 
-          <Typography display={{ xs: 'flex', md: 'none' }} variant='body1' style={{ whiteSpace: 'nowrap', color: "white", fontWeight: "bold" }} >GORILLA MMA</Typography>
+    <ElevationScroll trigger={trigger}>
 
-          <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
-            <IconButton
-              size="large"
-              aria-label="account of current user"
-              aria-controls="menu-appbar"
-              aria-haspopup="true"
-              onClick={handleOpenNavMenu}
-              color="inherit"
-            >
-              <MenuIcon />
-            </IconButton>
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: 'bottom',
-                horizontal: 'left',
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: 'top',
-                horizontal: 'left',
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: 'block', md: 'none' },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page.title} onClick={() => { handleCloseNavMenu(); navigateToPage(page) }}>
-                  <p style={{ textAlign: "center" }} >{page.title}</p>
-                </MenuItem>
-              ))}
-            </Menu>
-          </Box>
+      <AppBar sx={{
+        backgroundColor: trigger ? 'primary.main' : 'transparent',
+      }}>
+        <Container maxWidth="xl" >
+          <Toolbar disableGutters style={{ display: 'flex', justifyContent: 'space-between', padding: '0 100px' }}>
 
 
-
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignContent: 'end', flexDirection: 'row', gap: '20px' }}>
-            {pages.map((page) => (
-              <Button
-                key={page.title}
-                onClick={() => { navigateToPage(page) }}
-                sx={{ color: 'white', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', fontWeight: page.active ? '700' : '100' }}
-
+            <Box sx={{ display: { xs: 'flex', md: 'none' } }}>
+              <IconButton
+                size="large"
+                aria-label="account of current user"
+                aria-controls="menu-appbar"
+                aria-haspopup="true"
+                onClick={handleOpenNavMenu}
+                color="inherit"
               >
-                {page.title}
-              </Button>
-            ))}
-          </Box>
+                <MenuIcon />
+              </IconButton>
+              <Menu
+                id="menu-appbar"
+                anchorEl={anchorElNav}
+                anchorOrigin={{
+                  vertical: 'bottom',
+                  horizontal: 'left',
+                }}
+                keepMounted
+                transformOrigin={{
+                  vertical: 'top',
+                  horizontal: 'left',
+                }}
+                open={Boolean(anchorElNav)}
+                onClose={handleCloseNavMenu}
+                sx={{
+                  display: { xs: 'block', md: 'none' },
+                }}
+              >
+                {pages.map((page) => (
+                  <MenuItem key={page.title} onClick={() => { handleCloseNavMenu(); navigateToPage(page) }}>
+                    <p style={{ textAlign: "center", color: themer.palette.text.button }} >{page.title}</p>
+                  </MenuItem>
+                ))}
+              </Menu>
+            </Box>
 
-          <Box sx={{ display: { xs: 'none', md: 'flex' }, alignContent: 'end', flexDirection: 'row', }}>
-            <IconButton edge="end" color="inherit" aria-label="facebook" href={socialsURL.facebook}>
-              <FacebookIcon />
-            </IconButton>
-            <IconButton edge="end" color="inherit" aria-label="twitter" href={socialsURL.twitter}>
-              <TwitterIcon />
-            </IconButton>
-            <IconButton edge="end" color="inherit" aria-label="instagram" href={socialsURL.instagram}>
-              <InstagramIcon />
-            </IconButton>
-          </Box>
+            <Typography display={{ xs: 'flex', md: 'none' }} variant='body1' style={{ whiteSpace: 'nowrap', fontWeight: "bold" }} color={'inherit'} >GORILLA MMA</Typography>
+           
+            <Button sx={{color: 'inherit'}} onClick={() => { navigateToPage(findPageByPath('/')) }}>
+
+              <Box display={'flex'} flexDirection={'row'} alignItems={'center'} gap={1}>
+                <img src={Logo} height={40} width={40} />
+
+                <Typography display={{ xs: 'none', md: 'flex' }}  sx={{ whiteSpace: 'nowrap', fontWeight: "bold" }} >GORILLA MMA</Typography>
+              </Box>
+            </Button>
 
 
-        </Toolbar>
-      </Container>
-    </AppBar>
+
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignContent: 'end', flexDirection: 'row', gap: '20px' }}>
+              {pages.map((page) => (
+                <Button
+                  key={page.title}
+                  onClick={() => { navigateToPage(page) }}
+                  sx={{ color: 'inherit', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', fontWeight: page.active ? '700' : '100' }}
+
+                >
+                  {page.title}
+                </Button>
+              ))}
+            </Box>
+
+            <Box sx={{ display: { xs: 'none', md: 'flex' }, alignContent: 'end', flexDirection: 'row', }}>
+              <IconButton edge="end" color="inherit" aria-label="facebook" href={socialsURL.facebook}>
+                <FacebookIcon />
+              </IconButton>
+              <IconButton edge="end" color="inherit" aria-label="twitter" href={socialsURL.twitter}>
+                <TwitterIcon />
+              </IconButton>
+              <IconButton edge="end" color="inherit" aria-label="instagram" href={socialsURL.instagram}>
+                <InstagramIcon />
+              </IconButton>
+            </Box>
+
+
+          </Toolbar>
+        </Container>
+      </AppBar>
+    </ElevationScroll>
+
+
+
+
   );
 }
 export default ResponsiveAppBar;

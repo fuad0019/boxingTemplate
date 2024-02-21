@@ -4,12 +4,18 @@ import FadeIn from "../components/FadeIn"
 import TeamCard from "../components/TeamCard"
 import boxingClub from '../assets/images/boxingclub.jpg'
 import MapComponent from "../components/Map"
+import { useStyleContext } from "../contexts/StyleContext"
 
 
 
 
 function MapSection() {
     const theme = useTheme();
+    const {themer} = useStyleContext();
+
+    const position = [56.15, 10.22]; // Latitude and Longitude
+    const address = "Sankt Anne Gade, Århus 8210"
+
 
 
     return (
@@ -33,27 +39,25 @@ function MapSection() {
                 textAlign: 'center'
 
             }}>
-                <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={"white"}>
+                <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.primary}>
                     FIND VEJ TIL KLUBBEN
                 </Typography>
 
-                <Typography variant="h5" component="div" color={"white"}>
+                <Typography variant="h5" component="div" color={themer.palette.text.primary}>
                     Se på kortet hvor klubben er lokaliseret
                 </Typography>
             </div>
 
-            <Grid textAlign={'center'} alignItems={'center'} justifyContent={'center'} height={'50vh'} width={'50vw'} direction={'column'}>
-                <MapComponent></MapComponent>
-                <Typography variant="body1" component="div" color={"white"} marginTop={'10px'}>
-                Sankt Anna Gade
-                </Typography>
+            <Grid textAlign={'center'} alignItems={'center'} justifyContent={'center'} height={'50vh'} width={'75vw'} direction={'column'}>
+                <MapComponent position={position} address={address}></MapComponent>
+           
 
             </Grid>
 
 
 
 
-
+            
         </div>
 
 

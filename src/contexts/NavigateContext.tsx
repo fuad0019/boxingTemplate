@@ -2,7 +2,7 @@ import React, { createContext, useContext } from 'react';
 import useNavigateHook from '../hooks/navigateHook';
 
 // Create a context with an initial value (e.g., null)
-const NavigatorContext = createContext();
+const NavigatorContext = createContext({});
 
 
 function NavigatorContextProvider({ children }) {

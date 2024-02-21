@@ -1,40 +1,38 @@
-import { createContext, ReactNode } from 'react';
+import { createContext, ReactNode, useContext } from 'react';
 
 import styles from '../styling/HeroSection.module.scss';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
 import useNavigateHook from '../hooks/navigateHook';
+import lightTheme from './themes/lightTheme';
+import purpleTheme from './themes/purpleTheme';
+import darkTheme from './themes/darkTheme';
 
 
 interface StyleContextProps {
     children: ReactNode
 }
 
+const themer= darkTheme
 
-const theme = createTheme();
+
+const theme = createTheme(themer);
 
 theme.typography.h1 = {
     fontSize: '4rem', // default size
+    fontFamily: 'Kanit, sans-serif',
+
     [theme.breakpoints.up('xs')]: {
         fontSize: '4rem', // size at the 'sm' breakpoint
-        color: 'white',
-        fontFamily: 'Roboto, sans-serif',
         fontWeight: 700,
         letterSpacing: '-2.58px',
-        margin: '0',
-        width: '75.12%',
-        paddingRight:0,
         
         
     },
     [theme.breakpoints.up('md')]: {
         fontSize: '6rem', // size at the 'md' breakpoint
-        color: 'white',
-        fontFamily: 'Roboto, sans-serif',
         fontWeight: 700,
         letterSpacing: '-2.58px',
-        margin: '0px 24.88% 0px 0%',
-        width: '75.12%',
     },
 
 };
@@ -76,9 +74,23 @@ theme.typography.h6 = {
 };  
 
 
+theme.components = {
+    MuiFilledInput: {
+        styleOverrides: {
+            underline: {
+                '&:after': {
+                    borderBottomColor: 'gray', // Color of the line when active
+                },
+               
+            }
+        }
+    }
+}
+
 export const styleContext = createContext({
 
 });
+
 
 export default function StyleContext({ children }: StyleContextProps) {
 
@@ -87,10 +99,19 @@ export default function StyleContext({ children }: StyleContextProps) {
 
 
     return (
-        <ThemeProvider theme={theme} >
+        <ThemeProvider theme={theme}  >
+            <styleContext.Provider value={{themer}}>
             {children}
+
+            </styleContext.Provider>
 
         </ThemeProvider>
 
     )
 }
+
+function useStyleContext() {
+    return useContext(styleContext);
+  }
+
+export {useStyleContext}

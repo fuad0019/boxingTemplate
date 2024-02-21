@@ -5,7 +5,7 @@ import { Button } from '@mui/material';
 
 import TeamSection from '../sections/TeamSection';
 import { Team } from '../sections/TeamSection';
-import HeroSection from '../sections/HeroSection';
+import HeroSection from '../sections/heroSections/FullSizeHero';
 
 
 import boxingImage from '../assets/images/boxingtraining.jpg';
@@ -13,6 +13,7 @@ import mmaImage from '../assets/images/mmatraining.jpg';
 import TeamDetailSection from '../sections/DetailSection';
 import BufferSection from '../sections/BufferSection';
 import MapSection from '../sections/MapSection';
+import AdvantageSection from '../sections/AdvantageSection';
 
 
 function Home() {
@@ -63,15 +64,21 @@ function Home() {
 
             <div ref={myRef} style={{ marginBottom: '150px' }}>
                 <TeamSection teams={teams}></TeamSection>
-
             </div>
 
+            
 
-
+           
             <div >
                 <BufferSection title='EN KLUB FOR ÆGTE FIGHTERS' description='' buttonText='Læs Mere her' ></BufferSection>
-
             </div>
+
+
+            <div  >
+                <AdvantageSection ></AdvantageSection>
+            </div>
+
+            
 
             <div >
                 <MapSection ></MapSection>

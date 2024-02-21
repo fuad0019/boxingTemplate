@@ -3,32 +3,36 @@ import ResponsiveAppBar from "../components/NavBar";
 import FooterSection from "../sections/FooterSection";
 import CssBaseline from '@mui/material/CssBaseline';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import StyleContext from "../contexts/StyleContext";
+import  StyleContext, { useStyleContext } from "../contexts/StyleContext";
 import { NavigatorContextProvider } from "../contexts/NavigateContext";
+import { Box } from "@mui/material";
+
 
 const Layout = () => {
+
+    const { themer } = useStyleContext() as { themer: any };
+
 
     return (
 
 
-        <div style={{ backgroundColor: "black", justifyContent: 'center', display: 'flex', flexDirection: 'column' }} >
+        <Box sx={{ backgroundColor: themer.palette.primary.main, justifyContent: 'center', display: 'flex', flexDirection: 'column' }} >
             <NavigatorContextProvider>
 
-                <StyleContext>
 
 
                     <CssBaseline />
                     <ResponsiveAppBar></ResponsiveAppBar>
-
+                    
                     <Outlet />
 
+
                     <FooterSection></FooterSection>
-                </StyleContext>
 
 
             </NavigatorContextProvider>
 
-        </div>
+        </Box>
 
 
 

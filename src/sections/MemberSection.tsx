@@ -29,46 +29,28 @@ function MemberSection({ members }: MemberProps) {
 
 
     return (
-        <div style={{
-           
-            overflow: 'hidden', position: 'relative',
+        <Box sx={{
+            overflow: 'hidden',
+            position: 'relative',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            backgroundImage: `url(${boxingGym})`,
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            backgroundSize: 'cover',
         }}>
 
-            <div style={{
-                backgroundImage: `url(${boxingGym})`,
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                backgroundSize: 'cover',
-                height: matchesMD ? 700 : 1800,
-
-
-            }}>
-
-            </div>
-
-            <div style={{
-                position: 'absolute',
-                top: 0,
-                left: 0,
-                right: 0,
-                bottom: 0,
+            <Box sx={{
                 display: 'flex',
-                justifyContent: 'center',
-                alignItems: 'center',
                 flexDirection: 'column',
-                gap: '50px',
+                textAlign: 'center',
                 padding: '10% 5%',
+                gap: '50px',
                 backgroundColor: 'rgb(0,0,0,0.7)',
+                width: '100%',
             }}>
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    textAlign: 'center',
-
-
-                }}>
+                <div>
                     <Typography variant="h2" component="div" fontFamily={'Libre Franklin , sans-serif'} color={"white"}>
                         Holdet
                     </Typography>
@@ -79,38 +61,20 @@ function MemberSection({ members }: MemberProps) {
                 </div>
 
 
-
-
-
-
-                <Grid container
-                    justifyContent={'center'}
-                    alignItems={'stretch'}
-
-                    md={12}
-
-                    gap={theme.spacing(2)}
-
-                    direction={'row'}>
-
-                    {members.map((member: Member, index) => (
-                        <Grid item xs={6} md={2.5} >
-                            <FadeIn direction="top" >
-                                <MemberCard member={member} />
-
+                <Grid container justifyContent={'center'}  gap={{md:10, xs: 5}}  >
+                    {members.map((member, index) => (
+                        <Grid item xs={6} md={2.5} key={index}>
+                            <FadeIn direction="top">
+                                <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+                                    <MemberCard member={member} />
+                                </Box>
                             </FadeIn>
                         </Grid>
                     ))}
-
-
                 </Grid>
-            </div>
 
-
-
-
-
-        </div>
+            </Box>
+        </Box>
 
 
 

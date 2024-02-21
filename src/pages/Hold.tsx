@@ -7,6 +7,7 @@ import {useEffect } from 'react';
 import DetailSection from "../sections/DetailSection";
 import boxingTraining2 from '../assets/images/boxingtraining2.jpg';
 import crossfit from '../assets/images/crossfit.jpg';
+import BufferSection from "../sections/BufferSection";
 
 
 function Hold() {
@@ -49,8 +50,13 @@ function Hold() {
 
             </div>
 
-            <div >
+            <div style={{ marginBottom: 100 }}>
                 <DetailSection details={teams} subject="Hold"></DetailSection>
+
+            </div>
+
+            <div >
+                <BufferSection title='EN KLUB FOR ÆGTE FIGHTERS' description='' buttonText='Læs Mere her'></BufferSection>
 
             </div>
 
