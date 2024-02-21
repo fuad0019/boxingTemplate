@@ -14,7 +14,7 @@ const darkTheme = {
     },
   
     accent: {
-      main: '#2F4858'
+      main: '#B87C4C'
 
     }
 
