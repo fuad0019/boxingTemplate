@@ -10,18 +10,37 @@ import { Divider, Grid } from '@mui/material';
 import MapSection from './MapSection';
 import MapComponent from '../components/Map';
 import Form from '../components/Form';
-
+import PlaceIcon from '@mui/icons-material/Place';
+import PhoneIcon from '@mui/icons-material/LocalPhone';
+import MailIcon from '@mui/icons-material/Mail';
+import ContactElement from '../components/ContactElement';
+import { useStyleContext } from '../contexts/StyleContext';
 
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function ContactSection() {
 
+    const { themer } = useStyleContext();
 
     const handlePhoneCall = () => {
         const phoneNumber = '82-45-31-50'; // Replace with your phone number
         window.open(`tel:${phoneNumber}`);
     };
+
+    const handleMail = () => {
+        const mailUser = 'someone@example.com';
+        window.open(`mailto:${mailUser}`);
+    };
+
+    const getAdress = () => {
+        const address = "Sankt Annes Gade, Århus 8210";
+        const urlAddress = encodeURIComponent(address); // Encode the address for URL
+        return urlAddress
+    };
+
+
+    const mailUser = 'someone@example.com';
 
     const footerInfoList = [
         {
@@ -40,7 +59,7 @@ export default function ContactSection() {
                     <Typography>
                         Denmark
                     </Typography>
-             
+
                 </div>
 
             )
@@ -61,11 +80,16 @@ export default function ContactSection() {
                     <Typography>
                         Denmark
                     </Typography>
-             
+
                 </div>
             )
         }
     ]
+
+
+
+
+
 
     return (
 
@@ -79,68 +103,53 @@ export default function ContactSection() {
                 alignItems: 'center',
 
                 flexDirection: 'column',
-                gap: {xs: 2, md: 5}
+                gap: { xs: 2, md: 5 }
 
 
             }}
         >
-            <Typography padding={2} fontWeight={'bold'} variant={'h4'} color='white'>Vi vil rigtig gerne høre fra dig - Kontakt os!</Typography>
+            <Typography padding={2} fontWeight={'bold'} variant={'h4'} color={themer.palette.text.primary} >Vi vil rigtig gerne høre fra dig - Kontakt os!</Typography>
 
 
-            <Grid container direction={'row'} justifyContent={'center'} xs={12} gap={2}>
+            <div style={{display: 'flex', flexDirection: 'row',  justifyContent: 'center'}}>
 
-                <Grid container padding={2} md={'5'} xs={12} textAlign={'left'} direction={'column'} gap={2} >
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
+                <Grid container direction={'row'} xs={10} >
 
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Har du spørgsmål om dét at være medlem i klubben, så kan du stille os spørgsmål. </Typography>
+                    <Grid container padding={2} md={6} xs={12} textAlign={'left'} direction={'column'} gap={5} sx={{ backgroundColor: '#1D1E23', borderTopLeftRadius: '15px', borderTopRightRadius: {md: 0, xs: '15px'}, borderBottomLeftRadius: {md: '15px', xs:0}}} >
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Her kan du finde svar på de fleste af de spørgsmål, som rejser sig i forbindelse med at være kæmper. Du er naturligvis også velkommen til at ringe eller skrive til os. Vi sidder klar hver eneste dag.</Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Har du spørgsmål om dét at være medlem i klubben, så kan du stille os spørgsmål. </Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Her kan du finde svar på de fleste af de spørgsmål, som rejser sig i forbindelse med at være kæmper. Du er naturligvis også velkommen til at ringe eller skrive til os. Vi sidder klar hver eneste dag.</Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Hvis du er medlem – eller overvejer at blive det – hører vi naturligvis også meget gerne fra dig, så vi sammen kan finde det rette trænings hold til dig.</Typography>
 
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Hvis du er medlem – eller overvejer at blive det – hører vi naturligvis også meget gerne fra dig, så vi sammen kan finde det rette trænings hold til dig.</Typography>
-
-                    </div>
-
-                    <Divider color={'white'}></Divider>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 10 }}>
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="h5" fontWeight={'100'} color={'white'}>Telefontid </Typography>
-                        <div>
-                            <Typography marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Mandag – fredag: 6.00 – 24.00</Typography>
-                            <Typography marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Lørdag: 6.00 – 24.00</Typography>
-
-                            <Typography marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Søndag og helligdage: 6.00 – 24.00</Typography>
                         </div>
 
+                        <Divider color={'white'}></Divider>
 
 
-                    </div>
+                        <div style={{ gap: '50px', display: 'flex', flexDirection: 'column', paddingBottom: 100 }}>
+                            <div>
+                                <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Direkte henvendelse </Typography>
+                            </div>
+                            <div style={{ gap: 15, flexDirection: 'column', display: 'flex' }}  >
+                                <ContactElement content={<PhoneIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300} onClick={handlePhoneCall} style={{ cursor: 'pointer' }}>82 45 31 50 </Typography>} title='Telefon' />
+                                <ContactElement content={<MailIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300} onClick={handleMail} style={{ cursor: 'pointer' }}>hansen@gmail.com </Typography>} title='Mail' />
+                                <ContactElement content={<PlaceIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300}  ><Link href={`https://www.google.com/maps/search/?api=1&query=${getAdress()}`} sx={{ textDecoration: 'none', color: 'gray', fontWeight: 300 }} target="_blank" rel="noopener noreferrer">Sankt Annes Gade, Århus 8210</Link></Typography>} title='Adresse' />
+                            </div>
+                        </div>
 
+                    </Grid>
 
-
-
-
-                </Grid>
-
-                <Grid container padding={2} md={'5'} xs={12} gap={5} sx={{ backgroundColor: '#1B202A' }}>
-                    <div>
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Telefonisk henvendelse </Typography>
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="h3" fontWeight={'100'} color={'#143966'} onClick={handlePhoneCall}
-                            style={{ cursor: 'pointer' }}>82 45 31 50 </Typography>
-
-                    </div>
-
-                    <Divider sx={{ width: '90%', backgroundColor: '#143966' /* Change the color to your desired color */ }}></Divider>
-
-                    <div style={{ display: 'flex', flexDirection: 'column', gap: 20, width: '100%' }}>
-                        <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Send os en besked </Typography>
-                        <Form></Form>
-
-                    </div>
+                    <Grid container padding={2} md={'6'} xs={12} gap={5} sx={{ backgroundColor: '#272A33', borderTopRightRadius: {md: '15px', xs: 0}, borderBottomRightRadius: '15px', borderBottomLeftRadius: {md: 0, xs: '15px'} }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', gap: 20, width: '100%' }}>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Send os en besked </Typography>
+                            <Form></Form>
+                        </div>
+                    </Grid>
 
                 </Grid>
+            </div>
 
-
-            </Grid>
         </Box >
     );
 }

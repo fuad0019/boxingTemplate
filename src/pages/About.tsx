@@ -22,7 +22,7 @@ function About() {
         },
         {
             title: 'Kultur',
-            description:  'I dag står Gorilla MMA som en moderne facilitet med topmoderne udstyr, men vores hjerte og sjæl forbliver uændret. Vi er dedikeret til at udvikle boksere på alle niveauer – fra begyndere til elitesportsfolk. Med et fokus på teknik, udholdenhed, og mental styrke, forbereder vi vores kæmpere til enhver udfordring.'+ '\n' + '\n' + 'Vi er mere end bare en bokseklub; vi er en familie, et fællesskab bundet af lidenskab og respekt. Hvis du er interesseret i at blive en del af [Klubbens Navn], så besøg os eller kontakt os for mere information. Vi ser frem til at skrive det næste kapitel i vores historie med',
+            description:  'I dag står Gorilla MMA som en moderne facilitet med topmoderne udstyr, men vores hjerte og sjæl forbliver uændret. Vi er dedikeret til at udvikle boksere på alle niveauer – fra begyndere til elitesportsfolk. Med et fokus på teknik, udholdenhed, og mental styrke, forbereder vi vores kæmpere til enhver udfordring.'+ '\n' + '\n' + 'Vi er mere end bare en bokseklub; vi er en familie, et fællesskab bundet af lidenskab og respekt. Hvis du er interesseret i at blive en del af Gorilla MMA, så besøg os eller kontakt os for mere information. Vi ser frem til at skrive det næste kapitel i vores historie med',
             image: team,
         }
 
@@ -54,7 +54,7 @@ function About() {
 
             </div>
 
-            <div style={{ marginBottom: 100 }}>
+            <div >
                 <MemberSection members={members} ></MemberSection>
 
             </div>

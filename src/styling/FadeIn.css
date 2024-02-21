@@ -2,6 +2,7 @@
     .fade-in-section {
   
       transition: 0;
+    
     }
   
   }
@@ -11,6 +12,8 @@
     visibility: hidden;
     transition: opacity 0.8s ease-out, transform 0.8s ease-out;
     will-change: opacity, visibility;
+    height: 100%;
+
   }
 
 
@@ -19,4 +22,6 @@
     opacity: 1;
     transform: none;
     visibility: visible;
+    height: '100%'
+
   }

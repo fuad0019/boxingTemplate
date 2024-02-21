@@ -8,6 +8,8 @@ function Contact() {
 
 
 
+
+
     return (
         <div >
            
@@ -23,7 +25,7 @@ function Contact() {
             </div>
 
             <div style={{ marginBottom: 100 }}>
-                <MapSection></MapSection>
+                <MapSection ></MapSection>
 
             </div>
 

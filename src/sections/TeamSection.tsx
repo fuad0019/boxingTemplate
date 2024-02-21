@@ -2,6 +2,7 @@ import { Box, Grid, Typography, useTheme } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
 import TeamCard from "../components/TeamCard"
+import { useStyleContext } from "../contexts/StyleContext"
 
 
 export interface Team {
@@ -22,6 +23,7 @@ interface TeamProps {
 
 function TeamSection({ teams }: TeamProps) {
     const theme = useTheme();
+    const { themer } = useStyleContext();
 
 
     return (
@@ -41,11 +43,11 @@ function TeamSection({ teams }: TeamProps) {
                 textAlign: 'center'
 
             }}>
-                <Typography variant="h2" component="div" fontFamily={'Libre Franklin , sans-serif'} color={"white"}>
+                <Typography variant="h2" component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.primary}>
                     VÆLG DIT HOLD
                 </Typography>
 
-                <Typography variant="h6" component="div" color={"white"}>
+                <Typography variant="h6" component="div" color={themer.palette.text.secondary}>
                     Se en række af de hold vi tilbyder
                 </Typography>
             </div>
@@ -60,6 +62,10 @@ function TeamSection({ teams }: TeamProps) {
                 alignItems={'center'}
 
                 md={10}
+                sm={8}
+
+                xs={12}
+            
 
                 gap={theme.spacing(10)}>
 

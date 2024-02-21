@@ -4,8 +4,15 @@ import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
 import L from 'leaflet';
 import { Typography } from '@mui/material';
 
-const MapComponent = () => {
-    const position = [56.15, 10.22]; // Latitude and Longitude
+
+interface MapProps {
+    position: number[],
+    address: String,
+}
+
+
+const MapComponent = ({position, address}: MapProps) => {
+
 
     return (
 
@@ -16,7 +23,7 @@ const MapComponent = () => {
                 />
                 <Marker position={position}>
                     <Popup>
-                        A pretty CSS3 popup. <br /> Easily customizable.
+                        {address}
                     </Popup>
                 </Marker>
             </MapContainer>

@@ -7,29 +7,34 @@ import Link from '@mui/material/Link';
 import FooterCard from '../components/FooterCard';
 import Logo from '../assets/images/logo.png';
 import { Grid } from '@mui/material';
+import { useStyleContext } from '../contexts/StyleContext';
 
-function Copyright() {
-    return (
-        <Typography variant="body2" color="white">
-            {'Copyright © '}
-            <Link color="inherit" href="https://boxingzi.com/">
-            boxingzi
-            </Link>{' '}
-            {new Date().getFullYear()}
-            {'.'}
-        </Typography>
-    );
-}
+
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function FooterSection() {
 
+    const { themer } = useStyleContext();
+
+    function Copyright() {
+        return (
+            <Typography variant="body2" color={themer.palette.text.secondary}>
+                {'Copyright © '}
+                <Link color="inherit" href="https://boxingzi.com/">
+                boxingzi
+                </Link>{' '}
+                {new Date().getFullYear()}
+                {'.'}
+            </Typography>
+        );
+    }
+
     const footerInfoList = [
         {
             title: 'KONTAKT INFO',
             content: (
-                <div style={{ color: 'white' }} >
+                <div style={{ color: themer.palette.text.secondary }} >
                     <Typography>
                     Sankt Anna Gade
                     </Typography>
@@ -50,7 +55,7 @@ export default function FooterSection() {
         {
             title: 'ÅBNINGSTIDER',
             content: (
-                <div style={{ color: 'white' }} >
+                <div style={{ color: themer.palette.text.secondary }} >
                     <Typography variant='body1'>
                         <b>Mandag - Torsdag:</b> 16:00 - 20:00
                     </Typography>
@@ -78,7 +83,7 @@ export default function FooterSection() {
                 py: 3,
                 px: 2,
                 mt: 'auto',
-                backgroundColor: '#091117',
+                backgroundColor: themer.palette.secondary.main,
                 justifyContent: 'center',
                 display: 'flex',
                 alignItems: 'center'
@@ -88,14 +93,14 @@ export default function FooterSection() {
             <Grid container direction={'row'} gap={2} justifyContent={'center'}    alignItems={'center'}>
                 {footerInfoList.map((footerInfo) => (
                     <Grid item md={2} xs={7}  style={{ textAlign: 'center',  display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <Typography color={'white'} variant="h5"  component="div" fontFamily={'Libre Franklin , sans-serif'}>
+                        <Typography color={themer.palette.text.secondary} variant="h5"  component="div" fontFamily={'Libre Franklin , sans-serif'}>
                             {footerInfo.title}
                         </Typography>
                         <FooterCard footerInfo={footerInfo} ></FooterCard>
                     </Grid>
 
                 ))}
-                <Grid style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
+                <Grid item md={2} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
                     <img src={Logo} alt="" height={'auto'} width={'20%'} />
                     <Copyright />
                 </Grid>
