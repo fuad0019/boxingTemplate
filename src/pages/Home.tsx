@@ -74,10 +74,6 @@ function Home() {
             </div>
 
 
-            <div  >
-                <AdvantageSection ></AdvantageSection>
-            </div>
-
             
 
             <div >
