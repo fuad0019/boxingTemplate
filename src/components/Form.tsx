@@ -38,7 +38,7 @@ export default function Form() {
                         style: {
                             color: 'white', // Change label color to white
                         },
-                    }} fullWith label="Navn" placeHolder="123" id="fullWidth" />
+                    }} fullWidth label="Company Name" placeholder="123" id="fullWidth" />
                 <TextField variant='filled' InputProps={{
 
                     style: {
@@ -51,7 +51,7 @@ export default function Form() {
                         style: {
                             color: 'white', // Change label color to white
                         },
-                    }} fullWith type="email" label="Email" id="fullWidth" />
+                    }} fullWidth type="email" label="Email" id="fullWidth" />
                 <TextField variant='filled' InputProps={{
 
                     style: {
@@ -64,7 +64,7 @@ export default function Form() {
                         style: {
                             color: 'white', // Change label color to white
                         },
-                    }} fullWith type="tel" label="Telefonnummer" id="fullWidth" />
+                    }} fullWidth type="tel" label="Phone Number" id="fullWidth" />
             </div>
 
             <TextField variant='filled' InputProps={{
@@ -79,20 +79,22 @@ export default function Form() {
                     style: {
                         color: 'white', // Change label color to white
                     },
-                }} multiline rows={10} label="Besked" id="fullWidth" />
+                }} multiline rows={10} label="Message" id="fullWidth" />
 
             <FormGroup>
                 <FormControlLabel control={<Checkbox
                     defaultChecked
-                    sx={{ '& .MuiSvgIcon-root': { fontSize: 28 },
-                    '&.Mui-checked': {
-                        color: 'white', // color when checkbox is checked
-                    }}}
-                />} sx={{color: 'white'}} label="Jeg accepterer, at Carelink må opbevare mine information med henblik på at kontakte mig. Læs mere i Persondatapolitikken" />
+                    sx={{
+                        '& .MuiSvgIcon-root': { fontSize: 28 },
+                        '&.Mui-checked': {
+                            color: 'white', // color when checkbox is checked
+                        }
+                    }}
+                />} sx={{ color: 'white' }} label="I accept that Majabe Essence may store my information for the purpose of contacting me. Read more in the Privacy Policy" />
 
             </FormGroup>
 
-            <Button sx={{  paddingY: '15px', marginLeft: 0, width: 'fit-content', backgroundColor: 'rgb(255, 255, 255,0.3)', color: 'black', ":hover": { backgroundColor: 'rgb(255, 255, 255)', color: 'rgb(0,0,0)' } }} variant='contained' size="large">SEND BESKED</Button>
+            <Button sx={{ paddingY: '15px', marginLeft: 0, width: 'fit-content', backgroundColor: 'rgb(255, 255, 255,0.3)', color: 'black', ":hover": { backgroundColor: 'rgb(255, 255, 255)', color: 'rgb(0,0,0)' } }} variant='contained' size="large">SEND MESSAGE</Button>
 
 
 

@@ -5,24 +5,26 @@ import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import Link from '@mui/material/Link';
 import FooterCard from '../components/FooterCard';
-import Logo from '../assets/images/logo.png';
-import { Grid } from '@mui/material';
+import Logo2 from '../assets/images/logo2small.png';
+import { Button, Grid, Stack } from '@mui/material'; // Import Stack component from @mui/material package
 import { useStyleContext } from '../contexts/StyleContext';
-
-
+import { useNavigatorContext } from '../contexts/NavigateContext';
+import { LinkOffTwoTone } from '@mui/icons-material';
 
 // TODO remove, this demo shouldn't need to reset the theme.
 
 export default function FooterSection() {
 
+    const { navigateToPage, findPageByPath, pages, setActivePage } = useNavigatorContext();
+
     const { themer } = useStyleContext();
 
     function Copyright() {
         return (
-            <Typography variant="body2" color={themer.palette.text.secondary}>
+            <Typography variant="body2" color={'white'}>
                 {'Copyright © '}
-                <Link color="inherit" href="https://boxingzi.com/">
-                boxingzi
+                <Link color="inherit" href="https://Majabe.so/">
+                    Majabe Essence
                 </Link>{' '}
                 {new Date().getFullYear()}
                 {'.'}
@@ -32,77 +34,105 @@ export default function FooterSection() {
 
     const footerInfoList = [
         {
-            title: 'KONTAKT INFO',
+            title: '',
             content: (
-                <div style={{ color: themer.palette.text.secondary }} >
+                <div style={{ color: 'white' }} >
                     <Typography>
-                    Sankt Anna Gade
                     </Typography>
                     <Typography>
-                        Tlf: 55 55 55 55
                     </Typography>
                     <Typography>
-                        8000 Århus
                     </Typography>
                     <Typography>
-                        Denmark
                     </Typography>
-                 
+
                 </div>
 
             )
         },
         {
-            title: 'ÅBNINGSTIDER',
+            title: '',
             content: (
-                <div style={{ color: themer.palette.text.secondary }} >
+                <div style={{ color: 'white' }} >
                     <Typography variant='body1'>
-                        <b>Mandag - Torsdag:</b> 16:00 - 20:00
                     </Typography>
                     <Typography>
-                        <b>Fredag:</b> 16:00 - 20:00
                     </Typography>
                     <Typography>
-                        <b>Lørdag:</b> 10:00 - 11:00
                     </Typography>
                     <Typography>
-                        Denmark
                     </Typography>
-               
+
                 </div>
             )
         }
     ]
 
     return (
+        <Box component="footer" sx={{ backgroundColor: 'black', paddingX: 20, paddingY: 10 }}>
+            <Grid md={10} container spacing={2} justifyContent="space-between">
+                <Grid item xs={12} sm={6} md={3} >
+                    <Stack spacing={3}>
+
+                        <Typography variant="h6" gutterBottom>Majabe Essence</Typography>
+                        <Stack>
+                            <Typography>Village Octabar</Typography>
+                            <Typography>Sanaag</Typography>
+                            <Typography>Somalia</Typography>
+
+                        </Stack>
+                        <Stack>
+                            <Typography>customerservice@majabe.so</Typography>
+                        </Stack>
+
+                        <Stack>
+                            <Typography>0045-21516102</Typography>
+                        </Stack>
 
 
-        <Box
-            component="footer"
-            sx={{
-                py: 3,
-                px: 2,
-                mt: 'auto',
-                backgroundColor: themer.palette.secondary.main,
-                justifyContent: 'center',
-                display: 'flex',
-                alignItems: 'center'
+                    </Stack>
 
-            }}
-        >
-            <Grid container direction={'row'} gap={2} justifyContent={'center'}    alignItems={'center'}>
-                {footerInfoList.map((footerInfo) => (
-                    <Grid item md={2} xs={7}  style={{ textAlign: 'center',  display: 'flex', flexDirection: 'column', justifyContent: 'center' }}>
-                        <Typography color={themer.palette.text.secondary} variant="h5"  component="div" fontFamily={'Libre Franklin , sans-serif'}>
-                            {footerInfo.title}
-                        </Typography>
-                        <FooterCard footerInfo={footerInfo} ></FooterCard>
-                    </Grid>
+                </Grid>
+                <Grid item xs={12} sm={6} md={2} gap={20}>
+                    <Stack spacing={3}>
 
-                ))}
-                <Grid item md={2} style={{ display: 'flex', justifyContent: 'center', flexDirection: 'column', alignItems: 'center', gap: '20px' }}>
-                    <img src={Logo} alt="" height={'auto'} width={'20%'} />
-                    <Copyright />
+                        <Typography variant="h6"  gutterBottom>Information</Typography>
+                        <Link sx={{textDecoration: 'underline', cursor: 'pointer'}}
+                            onClick={() => { navigateToPage(findPageByPath('/Contact')) }}
+
+                        >
+                           Contact
+                        </Link>
+                     
+                    </Stack>
+
+                </Grid>
+                <Grid item xs={12} sm={6} md={2} gap={20}>
+                    <Stack spacing={3}>
+
+                        <Typography variant="h6" gutterBottom>Menu</Typography>
+                        {pages.filter((page) => page.title != 'Contact').map((page) => (
+                            <Link sx={{textDecoration: 'underline', cursor: 'pointer'}}
+                                onClick={() => { navigateToPage(page) }}
+
+                            >
+                                {page.title}
+                            </Link>
+                        ))}
+                    </Stack>
+
+                </Grid>
+                <Grid item xs={12} sm={6} md={2} gap={20}>
+                    <Stack spacing={3}>
+
+                        <Typography variant="h6" gutterBottom>Terms and Pol.</Typography>
+                        <Link href="#" color="inherit">Privacy Policy</Link>
+                        <Stack style={{ display: 'flex', flexDirection: 'column', alignItems: 'left' }}>
+                            <img src={Logo2} alt="" height={'auto'} width={130} />
+                            <Copyright />
+                        </Stack>
+                    </Stack>
+
                 </Grid>
             </Grid>
         </Box>

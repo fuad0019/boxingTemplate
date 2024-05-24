@@ -88,12 +88,12 @@ function IntroSection({ title, description, image, backgroundPosition }: IntroPr
                         height: '100%',
 
                     }}>
-                        <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.secondary}>
+                        <Typography variant="h3" component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.primary}>
                             {title}
                         </Typography>
 
-                        <Typography variant="h6" component="div" color={themer.palette.text.secondary}>
-                            {description}
+                        <Typography variant="h6" component="div" color={themer.palette.text.primary}>
+                            {description.length !== 0 ? description : 'Coming Soon'}
                         </Typography>
                     </div>
 

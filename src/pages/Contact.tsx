@@ -1,5 +1,5 @@
 import IntroSection from "../sections/IntroSection";
-import talking from '../assets/images/talking.jpg';
+import horizon from '../assets/images/sunset.jpeg';
 import MapSection from "../sections/MapSection";
 import ContactSection from "../sections/ContactSection";
 import { Typography } from "@mui/material";
@@ -15,18 +15,13 @@ function Contact() {
            
 
             <div style={{ marginBottom: 100 }}>
-                <IntroSection title="Kontakt" description="Se hvordan du kan kontakte klubben" image={talking} backgroundPosition="25% 75%"></IntroSection>
+                <IntroSection title="Contact" description="Request a qoute or contact us for more information!" image={horizon} backgroundPosition="25% 10%"></IntroSection>
             </div>
 
-
-            <div>
-
-                <ContactSection ></ContactSection>
-            </div>
 
             <div style={{ marginBottom: 100 }}>
-                <MapSection ></MapSection>
 
+                <ContactSection ></ContactSection>
             </div>
 
 

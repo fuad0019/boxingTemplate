@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Card, CardContent, Typography, CardMedia, useTheme, CardActions, Button, Paper } from '@mui/material';
-import { Team } from '../sections/TeamSection';
+import { Team } from '../sections/BlogSection';
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Member } from '../sections/memberSection';
@@ -33,8 +33,6 @@ export default function MemberCard({ member }: MemberCardProp) {
             justifyContent: 'center',
             display: 'flex',
             flexDirection: 'row'
-
-
         }}>
 
 
@@ -58,8 +56,6 @@ export default function MemberCard({ member }: MemberCardProp) {
                 right: 0,
                 bottom: 0,
                 top: '68%',
-         
-
             }}>
                 <Paper sx={{ padding: '7% 5%', textAlign: 'left', backgroundColor: themer.palette.secondary.main, color: 'black',  }} elevation={2}>
                     <Typography gutterBottom variant="body1" component="div" fontWeight={600} color='text.primary'>

@@ -13,23 +13,23 @@ interface StyleContextProps {
     children: ReactNode
 }
 
-const themer= darkTheme
+const themer= lightTheme;
 
 
 const theme = createTheme(themer);
 
 theme.typography.h1 = {
-    fontSize: '4rem', // default size
+    fontSize: '3rem', // default size
 
     [theme.breakpoints.up('xs')]: {
-        fontSize: '4rem', // size at the 'sm' breakpoint
+        fontSize: '3rem', // size at the 'sm' breakpoint
         fontWeight: 700,
         letterSpacing: '-2.58px',
         
         
     },
     [theme.breakpoints.up('md')]: {
-        fontSize: '6rem', // size at the 'md' breakpoint
+        fontSize: '3rem', // size at the 'md' breakpoint
         fontWeight: 700,
         letterSpacing: '-2.58px',
     },

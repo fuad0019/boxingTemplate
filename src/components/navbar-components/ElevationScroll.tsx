@@ -25,10 +25,15 @@ export default function ElevationScroll(props: Props) {
   
     return React.cloneElement(children, {
       elevation: trigger ? 4 : 0,
+      position: 'fixed', // Change from 'static' to 'fixed'
       style: {
         transition: 'background-color 0.2s ease',
-        color: trigger? themer.palette.text.primary : theme.palette.text.secondary
-
+        color: 'white',
+        backgroundColor: trigger ? '#1D1D1B' : 'transparent',
+        width: '100%', // Ensure the navbar spans the full width
+        top: 0, // Position at the top of the page
+        left: 0, // Position at the left of the page
+        zIndex: 1000, // Ensure the navbar is above other content
       },
     });
   }

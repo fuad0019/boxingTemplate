@@ -5,16 +5,16 @@ const lightTheme = {
       main: '#FFFFFF', // Example color
     },
     secondary: {
-      main: '#DADDE2', // Example color
+      main: '#1D1D1B', // Example color
     },
     text: {
-      primary: '#000000',
-      secondary: '#C0C0C0',
+      primary: '#FFFFFF',
+      secondary: '#273849',
       button: '#000000'
     },
   
     accent: {
-      main: '#B87C4C'
+      main: '#f18f52'
 
     }
 

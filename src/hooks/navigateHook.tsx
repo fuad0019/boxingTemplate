@@ -7,10 +7,10 @@ import { useEffect, useState } from 'react';
 function useNavigateHook() {
     // Define state and logic here
 
-
+// { path: '/Products', title: 'Products', state: 'Student', active: false },
     const navigate = useNavigate();
     
-    const [pages, setPages] = useState([{ path: '/', title: 'Hjem', state: '', active: false }, { path: '/Traeningstider', title: 'Træningstider', state: 'Student', active: false }, { path: '/Hold', title: 'Hold', state: 'Professional', active: false }, { path: '/Om', title: 'Klubben', state: '', active: false }, { path: '/Kontakt', title: 'Kontakt', state: '', active: false }]);
+    const [pages, setPages] = useState([{ path: '/', title: 'Home', state: '', active: false }, { path: '/Blog', title: 'Blog', state: 'Professional', active: false }, { path: '/Om', title: 'About', state: '', active: false }, { path: '/Contact', title: 'Contact', state: '', active: false }]);
     
     
     const findPageByPath = (path: string) => {

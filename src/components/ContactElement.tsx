@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Card, CardContent, Typography, CardMedia, useTheme, CardActions, Button, Grid } from '@mui/material';
-import { Team } from '../sections/TeamSection';
+import { Team } from '../sections/BlogSection';
 import PlaceIcon from '@mui/icons-material/Place';
 
 

@@ -24,7 +24,7 @@ export default function ContactSection() {
     const { themer } = useStyleContext();
 
     const handlePhoneCall = () => {
-        const phoneNumber = '82-45-31-50'; // Replace with your phone number
+        const phoneNumber = '004521516102'; // Replace with your phone number
         window.open(`tel:${phoneNumber}`);
     };
 
@@ -108,7 +108,6 @@ export default function ContactSection() {
 
             }}
         >
-            <Typography padding={2} fontWeight={'bold'} variant={'h4'} color={themer.palette.text.primary} >Vi vil rigtig gerne høre fra dig - Kontakt os!</Typography>
 
 
             <div style={{display: 'flex', flexDirection: 'row',  justifyContent: 'center'}}>
@@ -118,9 +117,9 @@ export default function ContactSection() {
                     <Grid container padding={2} md={6} xs={12} textAlign={'left'} direction={'column'} gap={5} sx={{ backgroundColor: '#1D1E23', borderTopLeftRadius: '15px', borderTopRightRadius: {md: 0, xs: '15px'}, borderBottomLeftRadius: {md: '15px', xs:0}}} >
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 20 }}>
 
-                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Har du spørgsmål om dét at være medlem i klubben, så kan du stille os spørgsmål. </Typography>
-                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Her kan du finde svar på de fleste af de spørgsmål, som rejser sig i forbindelse med at være kæmper. Du er naturligvis også velkommen til at ringe eller skrive til os. Vi sidder klar hver eneste dag.</Typography>
-                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Hvis du er medlem – eller overvejer at blive det – hører vi naturligvis også meget gerne fra dig, så vi sammen kan finde det rette trænings hold til dig.</Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Interested in learning more about our products or requesting a quote? </Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Contact us today to explore how our premium frankincense and myrrh can enhance your offerings. At Majabe Essences, we're dedicated to providing you with exceptional quality and service.</Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="body1" fontWeight={'100'} color={'white'}>Reach out now to start a conversation about your wholesale needs!</Typography>
 
                         </div>
 
@@ -129,12 +128,13 @@ export default function ContactSection() {
 
                         <div style={{ gap: '50px', display: 'flex', flexDirection: 'column', paddingBottom: 100 }}>
                             <div>
-                                <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Direkte henvendelse </Typography>
+                                <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Direct Contact</Typography>
                             </div>
                             <div style={{ gap: 15, flexDirection: 'column', display: 'flex' }}  >
-                                <ContactElement content={<PhoneIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300} onClick={handlePhoneCall} style={{ cursor: 'pointer' }}>82 45 31 50 </Typography>} title='Telefon' />
-                                <ContactElement content={<MailIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300} onClick={handleMail} style={{ cursor: 'pointer' }}>hansen@gmail.com </Typography>} title='Mail' />
-                                <ContactElement content={<PlaceIcon sx={{ color: 'white' }} />} description={<Typography color={'gray'} fontWeight={300}  ><Link href={`https://www.google.com/maps/search/?api=1&query=${getAdress()}`} sx={{ textDecoration: 'none', color: 'gray', fontWeight: 300 }} target="_blank" rel="noopener noreferrer">Sankt Annes Gade, Århus 8210</Link></Typography>} title='Adresse' />
+                            <ContactElement content={<PhoneIcon sx={{ color: 'white' }} />} description={ <><Typography color={'white'} fontWeight={300} onClick={handlePhoneCall} style={{ cursor: 'pointer' }}>Somalia - 0025-638179503</Typography>
+                        <Typography color={'white'} fontWeight={300} onClick={handlePhoneCall} style={{ cursor: 'pointer' }}>EU - 0045-21516102 </Typography></>} title='Phone' />
+                                <ContactElement content={<MailIcon sx={{ color: 'white' }} />} description={<Typography color={'white'} fontWeight={300} onClick={handleMail} style={{ cursor: 'pointer' }}>customerservice@majabe.so</Typography>} title='Mail' />
+                                <ContactElement content={<PlaceIcon sx={{ color: 'white' }} />} description={<Typography color={'white'} fontWeight={300}  ><Link href={`https://www.google.com/maps/search/?api=1&query=${getAdress()}`} sx={{ textDecoration: 'none', color: 'white', fontWeight: 300 }} target="_blank" rel="noopener noreferrer">Village Octabar / Sanaag Somalia</Link></Typography>} title='Adress' />
                             </div>
                         </div>
 
@@ -142,7 +142,7 @@ export default function ContactSection() {
 
                     <Grid container padding={2} md={'6'} xs={12} gap={5} sx={{ backgroundColor: '#272A33', borderTopRightRadius: {md: '15px', xs: 0}, borderBottomRightRadius: '15px', borderBottomLeftRadius: {md: 0, xs: '15px'} }}>
                         <div style={{ display: 'flex', flexDirection: 'column', gap: 20, width: '100%' }}>
-                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Send os en besked </Typography>
+                            <Typography marginTop={'10px'} marginLeft={'2px'} variant="h4" fontWeight={'100'} color={'white'}>Contact Majabe Essence</Typography>
                             <Form></Form>
                         </div>
                     </Grid>

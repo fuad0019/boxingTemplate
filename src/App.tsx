@@ -3,7 +3,7 @@ import {BrowserRouter, Route, Routes} from 'react-router-dom';
 import Layout from './pages/Layout';
 import Home from './pages/Home';
 
-import Hold from './pages/Hold';
+import Blog from './pages/Blog';
 import Contact from './pages/Contact';
 import Substitutes from './pages/Substitutes';
 import '@fontsource-variable/open-sans';
@@ -12,7 +12,7 @@ import '@fontsource/roboto';
 import '@fontsource-variable/inter';
 
 import './styling/style.css'
-import Traening from './pages/Traening';
+import Traening from './pages/Products';
 import About from './pages/About';
 import ScrollToTop from './components/ScrollToTop';
 import StyleContext from './contexts/StyleContext';
@@ -29,10 +29,10 @@ function App() {
     <Routes>
       <Route path="/" element={<Layout />}>
         <Route index element={<Home />} />
-        <Route path="Traeningstider" element={<Traening />} />
-        <Route path="Hold" element={<Hold />} />
+        <Route path="Products" element={<Traening />} />
+        <Route path="Blog" element={<Blog />} />
         <Route path="Om" element={<About />} />
-        <Route path="Kontakt" element={<Contact />} />
+        <Route path="Contact" element={<Contact />} />
         <Route path="*" element={<Home />} />
       </Route>
     </Routes>

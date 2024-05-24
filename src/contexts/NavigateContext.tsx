@@ -9,6 +9,7 @@ function NavigatorContextProvider({ children }) {
 
     const {navigateToPage, findPageByPath, pages, setActivePage} = useNavigateHook()
 
+
   
     return (
       <NavigatorContext.Provider value={{navigateToPage, findPageByPath, pages, setActivePage}}>

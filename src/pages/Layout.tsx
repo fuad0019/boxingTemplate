@@ -27,6 +27,9 @@ const Layout = () => {
                     <Outlet />
 
 
+<div>
+
+</div>
                     <FooterSection></FooterSection>
 
 

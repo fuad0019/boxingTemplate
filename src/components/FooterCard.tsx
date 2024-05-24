@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Card, CardContent, Typography, CardMedia, useTheme, CardActions, Button } from '@mui/material';
-import { Team } from '../sections/TeamSection';
+import { Team } from '../sections/BlogSection';
 import { useStyleContext } from '../contexts/StyleContext';
 
 
@@ -26,8 +26,8 @@ export default function FooterCard({ footerInfo }: FooterCardProp) {
         <Card elevation={0} sx={{
             position: 'relative',  backgroundColor: 'rgb(28, 28, 28, 0)', display: 'flex',
             flexDirection: 'column',
-            justifyContent: 'center',
-            alignItems: 'center'
+            justifyContent: 'left',
+            alignItems: 'left'
         }}>
 
             <CardContent sx={{

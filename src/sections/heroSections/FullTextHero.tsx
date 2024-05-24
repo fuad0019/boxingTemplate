@@ -12,7 +12,8 @@ import FadeIn from '../../components/FadeIn';
 import Fade from '../../components/Fade';
 import { styleContext, useStyleContext } from '../../contexts/StyleContext';
 import { Divider, Typography } from '@mui/material';
-
+import environment from '../../assets/images/environment3.jpeg'
+import { useNavigatorContext } from '../../contexts/NavigateContext';
 
 
 interface HeroSectionProps {
@@ -23,9 +24,10 @@ interface HeroSectionProps {
 
 function HeroSection({ scrollTo }: HeroSectionProps) {
 
- 
+
     const { themer } = useStyleContext();
 
+    const { navigateToPage, findPageByPath } = useNavigatorContext();
 
 
     const calculateLineLength = (wordLenght: number) => {
@@ -44,55 +46,41 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
     // const styles =useContext(styleContext);
 
     return (
-
-        <div className="hero" style={{ padding: 60, width: '100%', height: '100vh', position: 'relative', backgroundImage: `url(${darkRoom})` }}    
-        >
-
-
-            <Box className="hero-overlay" style={{ backgroundColor: themer.palette.primary.main, opacity: 0.2 }}>
-
-            </Box>
+        <div className="hero" style={{ padding: 60, width: '100%', height: '100vh', position: 'relative', backgroundImage: `url(${environment})`, backgroundPosition: '25% 20%', backgroundSize: 'cover' }}>
+            <Box className="hero-overlay" style={{ backgroundColor: '#1D1D1B', opacity: 0.5 }}></Box>
             <FadeIn direction='top'>
-
                 <Box width={'100%'} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} paddingTop={15}>
-
                     <Grid justifyContent={'center'} textAlign={'center'} container md={8} gap={5}>
+                        <Grid  md={12} gap={2} display={'flex'} justifyContent={'center'} alignItems={'center'} direction={'column'} textAlign={'center'} >
 
+                            <Grid md={12}>
+                                <Typography style={{ whiteSpace: 'pre-line', lineHeight: 1 }} fontFamily={'Kanit'} color={themer.palette.text.primary} variant='h1'>{'Premium Frankincense & Myrrh\nDirect from the Source'}</Typography>
+                            </Grid>
+                            <Divider style={{ borderColor: 'white', height: 2, width: 350 }} orientation="horizontal" />
 
-
-                        <Grid md={12}>
-
-                            <Typography style={{ whiteSpace: 'pre-line', lineHeight: 0.7 }} fontFamily={'Kanit'} color={themer.palette.text.primary} variant='h1'>{'START DIN\nKAMPSPORTS\nREJSE IDAG'}</Typography>
-
+                            <Grid md={8} justifyContent={'center'} textAlign={'center'} >
+                                <Typography color={themer.palette.text.primary} variant='body1'>
+                                Connect directly with the source of premium wholesale frankincense and myrrh. Enhance your product line with our world-class resins. Act now to access wholesale pricing and benefit from our exceptional quality — secure your order today!                                </Typography>
+                            </Grid>
                         </Grid>
 
-                        <Grid md={8}>
-                            <Typography color={themer.palette.text.primary} variant='body1'>
-                                Her er de ægte fighters. Vi er en lokal klub i århus som er hjemstedet for ægte fighters. Vi tilbyder en række kampsportshold og både på elite og begynder niveau.
-                            </Typography>
+                        <Grid md={12} display={'flex'} flexDirection={'column'} justifyContent={'center'} alignItems={'center'} gap={3}>
+                            <Button variant="contained" sx={{
+                                width: 'fit-content',
+                                color: 'black',
+                                backgroundColor: 'white',
+                                '&:hover': {
+                                    backgroundColor: darken('#FFFFFF', 0.1),
+                                },
+                            }} onClick={() => navigateToPage(findPageByPath('/Contact'))} size="large">Request qoute</Button>            
+
                         </Grid>
-
-
-                        <Grid md={12}>
-                            <Button onClick={() => scrollTo()} sx={{ paddingY: '15px', marginLeft: 0, width: 'fit-content', color: themer.palette.text.button, backgroundColor: themer.palette.accent.main, ":hover": { backgroundColor: darken(themer.palette.accent.main, 0.2) } }} variant='contained' size="large">TILMELD HER</Button>
-
-
-                        </Grid>
-
-
-
 
                     </Grid>
-
-
                 </Box>
+            </FadeIn>                   
 
-
-
-            </FadeIn>
-
-
-        </div >
+        </div>
     );
 }
 

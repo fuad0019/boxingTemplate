@@ -2,7 +2,7 @@ import { Box, Button, Grid, Typography, darken, useTheme, lighten } from "@mui/m
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
 import TeamCard from "../components/TeamCard"
-import boxingClub from '../assets/images/boxinggym2.jpeg'
+import environment from '../assets/images/environment.jpeg'
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useNavigatorContext } from "../contexts/NavigateContext"
@@ -33,14 +33,15 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
 
         <div style={{ overflow: 'hidden', position: 'relative' }}>
             <div style={{
-                backgroundImage: `url(${boxingClub})`,
+                backgroundImage: `url(${environment})`,
                 backgroundAttachment: 'fixed',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 minHeight: 500,
                 transform: isHovered ? 'scale(1.1)' : 'scale(1)',
-                transition: 'transform 0.5s ease-in-out'
+                transition: 'transform 0.5s ease-in-out',
+                opacity: 0.7
 
             }}>
 
@@ -51,9 +52,9 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                background: themer.palette.primary.main,
+                background: 'black',
                 display: 'flex',
-                opacity: 0.2,
+                opacity: 0.4,
                 
             }}>
 
@@ -92,15 +93,19 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
 
                         }}>
                             <Typography variant="h3" fontSize={{ md: '2.5rem', xs: '2.2rem' }} component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.primary}>
-                                {title}
+                                Family Owned Business
                             </Typography>
 
                             <Typography variant="h6" fontSize={{ md: '1rem', xs: '0.8rem' }} component="div" color={themer.palette.text.primary} textAlign={'center'}>
-                                Hjemstedet for profesionelle og amatør boksere i 30 år. Gorilla MMA har produceret Landsholdskæmpere og kvalitets fighters siden begyndelsen. Klubbens principper og karakter kan mærkes i dens kultur. Vind eller forsvind.
+                            Majabe is a family-centric frankincense seller. Although it is in the early phases of establishing itself as a company, it is rooted in tradition, having been owned by the family for centuries.
                             </Typography>
                         </div>
-                        <Button onClick={() => navigateToPage(findPageByPath('/Om'))} onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)} sx={{ paddingY: '15px', marginLeft: 0, width: 'fit-content', color: themer.palette.text.button, backgroundColor: themer.palette.accent.main, ":hover": { backgroundColor: darken(themer.palette.accent.main, 0.2) } }} variant='contained' size="large">{buttonText}</Button>
+                        <Button variant="outlined" sx={{
+                                width: 'fit-content',
+                                color: themer.palette.primary.main,
+                                borderColor: themer.palette.primary.main,
+                            }} onClick={() => navigateToPage(findPageByPath('/Om'))} onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)} size="large">Read More</Button>
 
                     </div>
 

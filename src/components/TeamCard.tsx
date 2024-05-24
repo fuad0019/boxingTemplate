@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Box, Card, CardContent, Typography, CardMedia, useTheme, CardActions, Button, darken } from '@mui/material';
-import { Team } from '../sections/TeamSection';
+import { Team } from '../sections/BlogSection';
 import { useState } from 'react';
 import { useNavigatorContext } from '../contexts/NavigateContext';
 import { useStyleContext } from '../contexts/StyleContext';
@@ -19,10 +19,12 @@ export default function TeamCard({ team }: TeamCardProp) {
 
     const [isHovered, setIsHovered] = useState(false);
     const { themer } = useStyleContext();
+    const [elevation, setElevation] = useState(0);
 
     return (
 
-        <Card key={team.index} sx={{ position: 'relative', height: { md: 400, xs: 300 } }}>
+        <Card elevation={elevation} onClick={() => navigateToPage(findPageByPath('/Blog'))} onMouseEnter={() => {setIsHovered(true); setElevation(5)}}
+        onMouseLeave={() => {setIsHovered(false); setElevation(0)}} key={team.index} sx={{ position: 'relative', height: { md: 400, xs: 300 }, cursor: isHovered? 'pointer': 'none' }}>
 
             <CardMedia
                 component="img"
@@ -43,9 +45,9 @@ export default function TeamCard({ team }: TeamCardProp) {
                 left: 0,
                 right: 0,
                 bottom: 0,
-                opacity: 0.2
-                , position: 'absolute',
-                backgroundColor: themer.palette.secondary.main
+                opacity: 0.2, 
+                position: 'absolute',
+                backgroundColor: 'black'
 
             }}>
 
@@ -58,6 +60,10 @@ export default function TeamCard({ team }: TeamCardProp) {
                     right: 0,
                     bottom: 0,
                     left: 0,
+                    display: 'flex',
+                    flexDirection: 'column',
+                    justifyContent: 'end',
+                    alignItems: 'center',
 
 
 
@@ -68,7 +74,6 @@ export default function TeamCard({ team }: TeamCardProp) {
                     flexDirection: 'column',
                     alignItems: 'center',
                     padding: 4,
-                    height: '100%'
 
 
 
@@ -77,23 +82,25 @@ export default function TeamCard({ team }: TeamCardProp) {
                         display: 'flex',
                         flexDirection: 'column',
                         justifyContent: 'center',
-                        alignItems: 'left',
+                        alignItems: 'center',
                         gap: 12
 
                     }}>
-                        <div style={{ display: 'flex', flexDirection: 'column', gap: '7px', width: '80%' }}>
+                        <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', gap: '7px', width: '80%' }}>
                             <Typography color={themer.palette.text.primary} variant="h4" component="div" fontFamily={'Libre Franklin , sans-serif'} >
-                                {team.index === 0 ? 'BOXING' : 'CROSSFIT'}
+                                {team.title}
                             </Typography>
-                            <Typography color={themer.palette.text.primary} variant="body2" fontWeight={100}>
-                                {team.index === 0
-                                    ? 'Vi hjælper både folk der vil være bedre til boksning og personer der vil i god form.' : 'Her opbygger du styrke, kondition, smidighed, koordination og fokus. - Hver gang!'}
-                            </Typography>
+                            
                         </div>
 
-
-                        <Button onClick={() => navigateToPage(findPageByPath('/Hold'))} onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)} sx={{paddingY: '15px', marginLeft: 0, width: 'fit-content',color: themer.palette.text.button, backgroundColor: themer.palette.accent.main, ":hover": {backgroundColor: darken(themer.palette.accent.main,0.2)} }} variant='contained' size="large">SE MERE</Button>
+                        <Button variant="outlined" sx={{
+                                width: 'fit-content',
+                                color: themer.palette.primary.main,
+                               
+                                borderColor: themer.palette.primary.main
+                            }} onClick={() => navigateToPage(findPageByPath('/Blog'))} onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)} size="large">Read More</Button>
+                        
                     </div>
 
                 </CardContent>
