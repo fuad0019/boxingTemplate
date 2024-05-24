@@ -1,13 +1,19 @@
-FROM node:18.18.2-alpine
+# Use an official Nginx image
+FROM nginx:alpine
 
-WORKDIR /app
+# Remove the default nginx.conf
+RUN rm /etc/nginx/conf.d/default.conf
 
-COPY . .
+# Copy the nginx configuration file and SSL certificates
+COPY nginx.conf /etc/nginx/nginx.conf
+COPY ./ssl/nginx-selfsigned.crt /etc/ssl/certs/
+COPY ./ssl/nginx-selfsigned.key /etc/ssl/private/
 
-RUN npm install
+# Copy the built app to the server
+COPY dist/ /usr/share/nginx/html
 
-RUN npm run build
+# Expose port 443 for SSL
+EXPOSE 443
 
-EXPOSE 8080
-
-CMD [ "npm", "run", "preview" ]
+# Start Nginx and keep it running in the foreground
+CMD ["nginx", "-g", "daemon off;"]
