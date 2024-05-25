@@ -9,7 +9,7 @@ services:
       - "443:443"
     volumes:
       - nginx-certs:/etc/ssl/certs
-      - nginx.conf:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/conf.d
       - ./dist:/usr/share/nginx/html
     networks:
       - nginx-certbot-network
@@ -19,7 +19,7 @@ services:
     container_name: certbot
     volumes:
       - nginx-certs:/etc/letsencrypt
-      - nginx.conf:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/conf.d
       - ./dist:/usr/share/nginx/html
     entrypoint: >
       certbot certonly --webroot --webroot-path=/usr/share/nginx/html
