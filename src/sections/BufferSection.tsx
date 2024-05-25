@@ -104,7 +104,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                                 width: 'fit-content',
                                 color: themer.palette.primary.main,
                                 borderColor: themer.palette.primary.main,
-                            }} onClick={() => navigateToPage(findPageByPath('/Om'))} onMouseEnter={() => setIsHovered(true)}
+                            }} onClick={() => navigateToPage(findPageByPath('/About'))} onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)} size="large">Read More</Button>
 
                     </div>
