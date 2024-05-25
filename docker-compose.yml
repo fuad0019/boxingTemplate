@@ -1,42 +1,41 @@
-version: "3.3"
+version: '3.8'
+
 services:
-  rtmp:
-    build: ./rtmp
+  nginx:
+    image: nginx:alpine
+    container_name: nginx-container
     ports:
+      - "80:80"
       - "443:443"
-      - "80:8080"
-
-    container_name: rmtp
-    depends_on:
-          - frontend
-        #  - frontend-app
-    restart: always
-
-#
-#  proxy:
- #   build: ./proxy
- #   ports:
- #     - "8080:8080"
-#    container_name: proxy
- #   depends_on:
- #         - frontend
-        #  - frontend-app
- #   restart: always
-
-
-  frontend:
-    build: ./
-    container_name: frontend
-    expose:
-          - "5173"
-    restart: always
-    environment:
-      PROXY_HOST: "172.19.0.2"
     volumes:
-      - ./:/usr/src/app
+      - nginx-certs:/etc/ssl/certs
+      - nginx-conf:/etc/nginx/conf.d
+      - ./dist:/usr/share/nginx/html
+    networks:
+      - nginx-certbot-network
 
+  certbot:
+    image: certbot/certbot
+    container_name: certbot
+    volumes:
+      - nginx-certs:/etc/letsencrypt
+      - nginx-conf:/etc/nginx/conf.d
+      - ./dist:/usr/share/nginx/html
+    entrypoint: >
+      certbot certonly --webroot --webroot-path=/usr/share/nginx/html
+      -d majabe.so --email fuad@example.com --agree-tos --non-interactive
+      --keep-until-expiring --no-eff-email
 
+    depends_on:
+      - nginx
+    networks:
+      - nginx-certbot-network
 
+networks:
+  nginx-certbot-network:
+    driver: bridge
 
-
+volumes:
+  nginx-certs:
+  nginx-conf:
 
