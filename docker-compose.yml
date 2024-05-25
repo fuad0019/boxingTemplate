@@ -9,7 +9,8 @@ services:
       - "443:443"
     volumes:
       - ./nginx-certs:/etc/ssl/certs
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - ./dist:/usr/share/nginx/html
     networks:
       - nginx-certbot-network
@@ -19,11 +20,10 @@ services:
     container_name: certbot
     volumes:
       - ./nginx-certs:/etc/letsencrypt
-      - ./nginx/nginx.conf:/etc/nginx/conf.d/nginx.conf
       - ./dist:/usr/share/nginx/html
     entrypoint: >
       certbot certonly --webroot --webroot-path=/usr/share/nginx/html
-      -d majabe.so --email fuadh73@gmail.com --agree-tos --non-interactive
+      -d majabe.so --email your-email@example.com --agree-tos --non-interactive
       --keep-until-expiring --no-eff-email
 
     depends_on:
@@ -34,6 +34,4 @@ services:
 networks:
   nginx-certbot-network:
     driver: bridge
-
-
 
