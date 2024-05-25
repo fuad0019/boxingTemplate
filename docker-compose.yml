@@ -23,10 +23,7 @@ services:
     volumes:
       - ./nginx-certs:/etc/letsencrypt
       - ./dist:/usr/share/nginx/html
-    entrypoint: >
-      certbot certonly --webroot --webroot-path=/usr/share/nginx/html
-      -d majabe.so --email your-email@example.com --agree-tos --non-interactive
-      --keep-until-expiring --no-eff-email
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
     networks:
       - nginx-certbot-network
 
