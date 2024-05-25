@@ -10,7 +10,7 @@ function useNavigateHook() {
 // { path: '/Products', title: 'Products', state: 'Student', active: false },
     const navigate = useNavigate();
     
-    const [pages, setPages] = useState([{ path: '/', title: 'Home', state: '', active: false }, { path: '/Blog', title: 'Blog', state: 'Professional', active: false }, { path: '/Om', title: 'About', state: '', active: false }, { path: '/Contact', title: 'Contact', state: '', active: false }]);
+    const [pages, setPages] = useState([{ path: '/', title: 'Home', state: '', active: false }, { path: '/Blog', title: 'Blog', state: 'Professional', active: false }, { path: '/About', title: 'About', state: '', active: false }, { path: '/Contact', title: 'Contact', state: '', active: false }]);
     
     
     const findPageByPath = (path: string) => {
