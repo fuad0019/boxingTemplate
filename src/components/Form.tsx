@@ -19,10 +19,14 @@ export default function Form() {
 
     const handleSendEmail = async () => {
 
+        console.log('Clicked send email button');
+
         if (!companyName || !email || !phoneNumber || !message || !isAccepted) {
             alert('Please fill all fields and accept the privacy policy!');
             return;
-        }
+        }        
+        console.log('Sending email...');
+
         // Implement sending logic here
         const mailData = {
             from: email,
