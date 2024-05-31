@@ -11,7 +11,7 @@ interface MailData {
 }
 
 const sendMail = async (mailData: MailData): Promise<any> => {
-    const url = 'http://85.190.240.93:3000/send-email';
+    const url = 'https://majabe.so/api/mail/send-email';
     const config = {
         headers: {
             'Content-Type': 'application/json',
