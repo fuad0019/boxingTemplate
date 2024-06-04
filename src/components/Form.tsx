@@ -29,8 +29,9 @@ export default function Form() {
 
         // Implement sending logic here
         const mailData = {
-            from: 'customerservice@majabe.so',
-            to: 'customerservice@majabe.so',
+            
+            email: email,
+            number: phoneNumber,
             name: companyName , 
             subject: 'Query from Majabe Essence Website',
             message: message,
