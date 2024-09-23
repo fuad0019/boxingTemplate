@@ -14,31 +14,25 @@ import InputLabel from '@mui/material/InputLabel';
 
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 
-import Tooltip from '@mui/material/Tooltip';
 import MenuItem from '@mui/material/MenuItem';
-import Logo from '../assets/images/logo.png'
 import Logo2 from '../assets/images/logo2.png'
 
-import FacebookIcon from '@mui/icons-material/Facebook';
-import InstagramIcon from '@mui/icons-material/Instagram';
-import TwitterIcon from '@mui/icons-material/Twitter';
-import useNavigateHook from '../hooks/navigateHook';
+
 
 import { useLocation } from 'react-router-dom';
 import { useNavigatorContext } from '../contexts/NavigateContext';
-import { Slide, useScrollTrigger } from '@mui/material';
+import {useScrollTrigger } from '@mui/material';
 import ElevationScroll from './navbar-components/ElevationScroll';
 import { useStyleContext } from '../contexts/StyleContext';
-import HideOnScroll from './navbar-components/HideOnScroll';
-import useLanguageHook from '../hooks/languageHook';
-import FixedOnScroll from './navbar-components/Fixed';
+
+import { useLanguageContext } from '../contexts/LanguageContext';
 
 
 export interface Page {
 
   path: string,
   title: string,
-  state: string,
+  state?: any,
   active: boolean
 
 }
@@ -51,12 +45,13 @@ function ResponsiveAppBar(props: Props) {
 
   const { navigateToPage, findPageByPath, pages, setActivePage } = useNavigatorContext();
 
-  const { languages } = useLanguageHook();
+  const [availablePages, setAvailablePages] = useState<Page[]>([])
 
-  const [language, setLanguage] = useState(languages[0].language);
+  const { languages, setActiveLanguage, language } = useLanguageContext();
+
 
   const handleChange = (event: SelectChangeEvent) => {
-    setLanguage(event.target.value as string);
+    setActiveLanguage(event.target.value as string);
   };
   const { children, window } = props
 
@@ -101,17 +96,18 @@ function ResponsiveAppBar(props: Props) {
     console.log(pathname)
 
     let page = findPageByPath(pathname)
-
-
-
-
-
-
-
     setActivePage(page)
 
 
   }, [])
+
+
+  useEffect(() => {
+      
+      setAvailablePages(pages.filter(page => page.title !== "Article"))
+  
+    }, [pages])
+
 
 
 
@@ -122,8 +118,6 @@ function ResponsiveAppBar(props: Props) {
         <AppBar>
           <Container maxWidth="xl" >
             <Toolbar disableGutters style={{ display: 'flex', padding: '0px 5%', flexDirection: 'row' }}>
-
-
 
               <Box
                 sx={{
@@ -161,9 +155,9 @@ function ResponsiveAppBar(props: Props) {
                     backgroundColor: 'transparent' // Set the background color to transparent
                   }}
                 >
-                  {pages.map((page) => (
+                  {availablePages.map((page) => (
                     <MenuItem key={page.title} onClick={() => { handleCloseNavMenu(); navigateToPage(page) }}>
-                      <p style={{ textAlign: "center", color: 'black' }} >{page.title}</p>
+                      <p style={{ textAlign: "center", color: 'black' }} >{language.file.pages[page.title]}</p>
                     </MenuItem>
                   ))}
                 </Menu>
@@ -189,14 +183,14 @@ function ResponsiveAppBar(props: Props) {
                   </Box>
                 </Button>
                 <Box sx={{ display: 'flex', alignContent: 'end', flexDirection: 'row', gap: '20px', paddingTop: '20px' }}>
-                  {pages.map((page) => (
+                  {availablePages.map((page) => (
                     <Button
                       key={page.title}
                       onClick={() => { navigateToPage(page) }}
                       sx={{ color: 'inherit', justifyContent: 'space-between', display: 'flex', flexDirection: 'row', fontWeight: page.active ? '600' : '100', textDecoration: page.active ? 'underline' : 'none' }}
 
                     >
-                      {page.title}
+                      {language.file.pages[page.title]}
                     </Button>
                   ))}
                 </Box>
@@ -209,7 +203,7 @@ function ResponsiveAppBar(props: Props) {
                     <Select
                       labelId="demo-simple-select-label"
                       id="demo-simple-select"
-                      value={language}
+                      value={language.language}
                       label="Language"
                       onChange={handleChange}
                       sx={{
@@ -233,19 +227,24 @@ function ResponsiveAppBar(props: Props) {
                         },
                       }}
                     >
-                      {languages.map((language) => (
-                        <MenuItem key={language.language} value={language.language}>
-                          <Box display="flex" alignItems="center">
-                            <Avatar
-                              src={language.image}
-                              sx={{ width: 24, height: 24, marginRight: 2 }}
-                            />
-                            <Typography variant="body2" style={{ color: 'white' }}>
-                              {language.language}
-                            </Typography>
-                          </Box>
-                        </MenuItem>
-                      ))}
+                      {languages.map((language) => {
+
+                        console.log("Image " + language.image)
+
+                        return (
+                          <MenuItem key={language.language} value={language.language}>
+                            <Box display="flex" alignItems="center">
+                              <Avatar
+                                src={language.image}
+                                sx={{ width: 24, height: 24, marginRight: 2 }}
+                              />
+                              <Typography variant="body2" style={{ color: 'white' }}>
+                                {language.language}
+                              </Typography>
+                            </Box>
+                          </MenuItem>
+                        )
+                      } )}
                     </Select>
                   </FormControl >
 

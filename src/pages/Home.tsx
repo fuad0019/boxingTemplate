@@ -1,135 +1,89 @@
 
-import {useRef} from 'react';
-import { Button } from '@mui/material';
+import { useEffect, useRef, useState } from 'react';
 
 
 import BlogSection from '../sections/BlogSection';
-import { Team } from '../sections/BlogSection';
 import HeroSection from '../sections/heroSections/FullTextHero';
 
 
-import boxingImage from '../assets/images/boxingtraining.jpg';
-import Frereane from '../assets/images/productFrereana.jpg';
-import Remedy from '../assets/images/native.jpg';
-import Cancer from '../assets/images/environment.jpg';
-import native from '../assets/images/native.jpg';
-import worker from '../assets/images/product.jpeg';
 
-import skincare from '../assets/images/skincare.jpg';
-import carteriProduct from '../assets/images/productFrankincense.jpg';
-import myrr from '../assets/images/productMyrr.jpg';
-
-import TeamDetailSection, { Detail } from '../sections/DetailSection';
 import BufferSection from '../sections/BufferSection';
-import MapSection from '../sections/MapSection';
-import AdvantageSection from '../sections/AdvantageSection';
-import ProductSection from '../sections/ProductSection';
-import ParallexSection from '../sections/ParallexContainer';
-
-
+import ProductSection, { Detail } from '../sections/ProductSection';
+import getProducts from '../services/productService';
+import getArticles from '../services/articleService';
+import { useNavigatorContext } from '../contexts/NavigateContext';
+import { ShowcaseItem } from '../components/ShowcaseCard';
+import { useLanguageContext } from '../contexts/LanguageContext';
 function Home() {
 
     const myRef = useRef(null);
 
+    const { navigateToPage, findPageByPath } = useNavigatorContext();
+
+    const { languages, setActiveLanguage, language } = useLanguageContext();
 
     const scrollToRef = (ref: React.MutableRefObject<any>) => {
-      ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        ref.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+
+    const [products, setProducts] = useState<Detail[]>([]);
+    const [articles, setArticles] = useState<ShowcaseItem[]>([]);
+
+    const handleProductClick = (index: number) => {
+        console.log(index)
+        navigateToPage(findPageByPath('/Products', index));
     };
 
 
+    useEffect( () => {   
+
+        (async () => {
+            try {
+                setProducts(await getProducts());
+            } catch (error) {
+                console.error('Error fetching products:', error);
+            }
+
+            try {
+                let tempArticles = (await getArticles()).map((article, index) => {
+
+                    console.log(index)
+
+                    return ({ ...article, index })
+                }) as ShowcaseItem[];
+
+                setArticles(tempArticles);
+            } catch (error) {
+                console.error('Error fetching Articles:', error);
+            }
+        })();
     
-  
+
+    }, []);
 
 
-    const products: Detail[] = [
-        {
-            title: 'Carterii Resin:',
-            description: 'Perfect for perfumery and medicinal applications.'
-,
-            image: carteriProduct,
-       
-        }
-        ,
-        {
-            title: 'Frereana Resin',
-            description: ' Ideal for skincare and ceremonial uses.'
-,
-            image: Frereane,
-       
-        },{
-            title: 'Commiphora Myrrha',
-            description: 'Known for its healing properties and aromatic allure.'
-,
-            image: myrr
-       
-        }
 
-    ]
-
-    const articles: Detail[] = [
-        {
-            title: 'Frankincense for Meditation',
-            description: 'Discover how frankincense can enhance your meditation practice and promote relaxation and focus.',
-            image: worker },
-           
-        {
-            title: 'Frankincense for Cancer Treatment',
-            description: 'Learn about the Cancer benefits of frankincense, including its anti-aging and moisturizing properties.',
-            image: Cancer 
-        },
-        {
-            title: 'Frankincense for Respiratory Health',
-            description: 'Explore how frankincense can support respiratory health and help alleviate symptoms of respiratory conditions.',
-            image: Remedy
-        },
-        {
-            title: 'Frankincense for Skin Care',
-            description: 'Explore how frankincense can support respiratory health and help alleviate symptoms of respiratory conditions.',
-            image: skincare
-        }
-    ]
-
+ 
 
     return (
 
-
-
         <div >
 
-
             <div >
-                <HeroSection scrollTo={()=>scrollToRef(myRef)} ></HeroSection>
+                <HeroSection scrollTo={() => scrollToRef(myRef)} ></HeroSection>
             </div>
-
-
-
 
             <div ref={myRef} >
-                <ProductSection details={products} subject='Explore Our Premium Selection'></ProductSection>
+                <ProductSection details={products} subject='Explore Our Premium Selection' onActionClick={handleProductClick}></ProductSection>
             </div>
 
-
-            <div >
-                <BufferSection buttonText='read more'></BufferSection>
-            </div>
-           
-         <div >
-                <BlogSection teams={articles}></BlogSection>
+            <div>
+                <BufferSection buttonText={language.file.about.bufferSection.button} title={language.file.about.bufferSection.title} description={language.file.about.bufferSection.description}></BufferSection>
             </div>
 
-            
-            
-       
-
-
-           
-          
-    
-
-
-
-            
-
+            <div>
+                <BlogSection articles={articles}></BlogSection>
+            </div>
 
         </div>
     )

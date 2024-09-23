@@ -3,7 +3,6 @@ import { createContext, ReactNode, useContext } from 'react';
 import styles from '../styling/HeroSection.module.scss';
 import { createTheme } from '@mui/material/styles';
 import { ThemeProvider } from '@mui/material/styles';
-import useNavigateHook from '../hooks/navigateHook';
 import lightTheme from './themes/lightTheme';
 import purpleTheme from './themes/purpleTheme';
 import darkTheme from './themes/darkTheme';

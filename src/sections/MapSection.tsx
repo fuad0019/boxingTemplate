@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography, useTheme } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
-import TeamCard from "../components/TeamCard"
+import TeamCard from "../components/ShowcaseCard"
 import boxingClub from '../assets/images/boxingclub.jpg'
 import MapComponent from "../components/Map"
 import { useStyleContext } from "../contexts/StyleContext"

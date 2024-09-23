@@ -1,13 +1,19 @@
 import * as React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Box from '@mui/material/Box';
 import FormGroup from '@mui/material/FormGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Checkbox from '@mui/material/Checkbox';
 import { Button, TextField } from '@mui/material';
-import sendMail from '../services/send';
+import sendMail from '../services/sendMail';
+import { useLanguageContext } from '../contexts/LanguageContext';
 
-export default function Form() {
+interface FormProps {
+    payload?: string;
+    sendAction: () => void;
+}
+
+export default function Form({ payload, sendAction }: FormProps) {
     const [companyName, setCompanyName] = useState('');
     const [email, setEmail] = useState('');
     const [phoneNumber, setPhoneNumber] = useState('');
@@ -17,6 +23,14 @@ export default function Form() {
     const [emailSent, setEmailSent] = useState<boolean>(false);
     const [error, setError] = useState<string | null>(null);
 
+
+    useEffect(() => {
+        if (payload && payload.length > 0) {
+            setMessage(payload);
+        }
+    }, [payload]);
+
+
     const handleSendEmail = async () => {
 
         console.log('Clicked send email button');
@@ -24,15 +38,15 @@ export default function Form() {
         if (!companyName || !email || !phoneNumber || !message || !isAccepted) {
             alert('Please fill all fields and accept the privacy policy!');
             return;
-        }        
+        }
         console.log('Sending email...');
 
         // Implement sending logic here
         const mailData = {
-            
+
             email: email,
             number: phoneNumber,
-            name: companyName , 
+            name: companyName,
             subject: 'Query from Majabe Essence Website',
             message: message,
         };
@@ -41,7 +55,7 @@ export default function Form() {
             await sendMail(mailData);
             setEmailSent(true);
             setError(null);
-            alert('Form submitted successfully!');
+            sendAction()
 
         } catch (error: any) {
             console.error('Error sending email:', error.message);
@@ -49,7 +63,7 @@ export default function Form() {
             setError(error.message);
         }
     };
-
+    const { languages, setActiveLanguage, language } = useLanguageContext();
 
 
     return (
@@ -180,7 +194,7 @@ export default function Form() {
                 variant='contained'
                 size="large"
             >
-                SEND MESSAGE
+               {language.file.contact.form.button}
             </Button>
         </Box>
     );

@@ -1,90 +1,115 @@
-import { Box, Grid, Typography, useTheme } from "@mui/material"
+import { Box, Button, Grid, Typography, useTheme } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
-import TeamCard from "../components/TeamCard"
+import ShowcaseCard, { ShowcaseItem } from "../components/ShowcaseCard"
 import { useStyleContext } from "../contexts/StyleContext"
+import LazyLoad from 'react-lazyload';
+import { useEffect, useState } from "react"
+import { useLanguageContext } from "../contexts/LanguageContext"
 
 
-export interface Team {
 
-    title: string,
-    description: string,
-    image: string,
-    index: number,
-    context: string
 
+interface BlogProps {
+    articles: ShowcaseItem[]
 }
 
 
-interface TeamProps {
-    teams: Team[]
-}
-
-
-function BlogSection({ teams }: TeamProps) {
+function BlogSection({ articles }: BlogProps) {
     const theme = useTheme();
     const { themer } = useStyleContext();
+
+    const [visibleArticles, setVisibleArticles] = useState<ShowcaseItem[]>([]);
+    const duplicateArticles = [...articles, ...articles];
+
+    const { languages, setActiveLanguage, language } = useLanguageContext();
+
+
+
+    const handleViewMore = () => {
+        const nextVisibleArticles = duplicateArticles.slice(0, visibleArticles.length + 4);
+        setVisibleArticles(nextVisibleArticles);
+    };
+
+    useEffect(() => {
+        setVisibleArticles(duplicateArticles.slice(0, 4));
+    }, [articles]);
 
 
     return (
         <div style={{
             display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
+
             flexDirection: 'column',
             gap: '50px',
-            padding: ' 10% 0px',
-            backgroundColor: themer.palette.accent.main
+            padding: ' 10% 9%',
+            backgroundColor: '#FFFFFF'
         }}>
 
+            <div style={{
+                display: 'flex',
 
-            <FadeIn direction={'top'} distance='2' >
-
-                <div style={{
-                    display: 'flex',
-                    justifyContent: 'center',
-                    alignItems: 'center',
-                    flexDirection: 'column',
-                    textAlign: 'center',
+                flexDirection: 'row',
+                justifyContent: 'space-between',
+                flex: 1
 
 
-                }}>
-                    <Typography variant="h2" component="div" fontFamily={'Libre Franklin , sans-serif'} color={'white'}>
-                        Learn More
-                    </Typography>
-                    <Typography variant="h6" component="div" color={'white'}>
-                        Read these articels to learn more about the our product and it's benefits.
-                    </Typography>
+            }}>
 
-                </div>
 
+                <FadeIn direction={'top'} distance='2' >
+
+                    <div style={{
+                        display: 'flex',
+
+                        flexDirection: 'column',
+                        textAlign: 'left',
+
+
+                    }}>
+                        <Typography variant="h5" fontWeight={'600'} component="div" fontFamily={'Libre Franklin , sans-serif'} color={'black'}>
+                            {language.file.blog.articleSection.title}
+                        </Typography>
+                        <Typography variant="h6" fontWeight={'100'} component="div" color={'black'}>
+                        {language.file.blog.articleSection.description}
+                        </Typography>
+
+                    </div>
+
+
+                </FadeIn>
+
+                <Box display="flex" justifyContent="center" marginTop={2}>
+
+                    <Button disabled={visibleArticles.length == duplicateArticles.length} variant="outlined" color={"secondary"} onClick={handleViewMore}>
+                    {language.file.blog.articleSection.button}
+                    </Button>
+                </Box>
+            </div>
+
+            <FadeIn direction='bottom'>
+
+                <Grid container
+
+                    md={12}
+                    sm={8}
+
+                    xs={12}
+
+                    gap={6}
+
+                >
+
+                    {visibleArticles.map((article: ShowcaseItem) => (
+                        <Grid item xs={8} md={3.7}>
+                            <ShowcaseCard showcaseItem={article} />
+                        </Grid>
+                    ))}
+
+
+                </Grid>
 
             </FadeIn>
-
-
-
-            <Grid container display={'flex'}
-                justifyContent={'center'}
-                alignItems={'center'}
-
-                md={12}
-                sm={8}
-
-                xs={12}
-
-
-                gap={2}>
-
-                {teams.map((team: Team) => (
-                    <Grid item xs={8} md={5.5}>
-                        <FadeIn direction='bottom'>
-                            <TeamCard team={team} />
-                        </FadeIn>
-                    </Grid>
-                ))}
-
-
-            </Grid>
 
 
 

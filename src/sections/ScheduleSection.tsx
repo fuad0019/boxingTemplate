@@ -1,7 +1,7 @@
 import { Box, Grid, Typography, useTheme } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
-import TeamCard from "../components/TeamCard"
+import TeamCard from "../components/ShowcaseCard"
 
 import Schedule from '../components/Schedule';
 import appointments from '../assets/scripts/today-appointments';

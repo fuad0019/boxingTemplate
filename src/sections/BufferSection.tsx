@@ -1,12 +1,13 @@
 import { Box, Button, Grid, Typography, darken, useTheme, lighten } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
-import TeamCard from "../components/TeamCard"
-import environment from '../assets/images/environment.jpeg'
+import TeamCard from "../components/ShowcaseCard"
+import environment from '../assets/images/underway.jpg'
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
 import { useNavigatorContext } from "../contexts/NavigateContext"
 import { useStyleContext } from "../contexts/StyleContext"
+import { useLanguageContext } from "../contexts/LanguageContext"
 
 export interface BufferProp {
 
@@ -23,6 +24,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
     const navigate = useNavigate();
     const [isHovered, setIsHovered] = useState(false);
     const { navigateToPage, findPageByPath } = useNavigatorContext();
+    const { languages, setActiveLanguage, language } = useLanguageContext();
 
     const { themer } = useStyleContext();
 
@@ -35,7 +37,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
             <div style={{
                 backgroundImage: `url(${environment})`,
                 backgroundAttachment: 'fixed',
-                backgroundPosition: 'center',
+                backgroundPosition: '25% 0%',
                 backgroundRepeat: 'no-repeat',
                 backgroundSize: 'cover',
                 minHeight: 500,
@@ -55,7 +57,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                 background: 'black',
                 display: 'flex',
                 opacity: 0.4,
-                
+
             }}>
 
             </div>
@@ -68,7 +70,7 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                 bottom: 0,
                 justifyContent: 'center',
                 alignItems: 'center',
-                textAlign: 'center', 
+                textAlign: 'center',
             }}>
 
                 <FadeIn direction='bottom'>
@@ -79,9 +81,6 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
                         flexDirection: 'column',
                         gap: 30,
                         height: '100%'
-
-
-
                     }}>
                         <div style={{
                             display: 'flex',
@@ -93,26 +92,21 @@ function BufferSection({ title, description, buttonText }: BufferProp) {
 
                         }}>
                             <Typography variant="h3" fontSize={{ md: '2.5rem', xs: '2.2rem' }} component="div" fontFamily={'Libre Franklin , sans-serif'} color={themer.palette.text.primary}>
-                                Family Owned Business
+                                {title}
                             </Typography>
 
                             <Typography variant="h6" fontSize={{ md: '1rem', xs: '0.8rem' }} component="div" color={themer.palette.text.primary} textAlign={'center'}>
-                            Majabe is a family-centric frankincense seller. Although it is in the early phases of establishing itself as a company, it is rooted in tradition, having been owned by the family for centuries.
+                                {description}
                             </Typography>
                         </div>
                         <Button variant="outlined" sx={{
-                                width: 'fit-content',
-                                color: themer.palette.primary.main,
-                                borderColor: themer.palette.primary.main,
-                            }} onClick={() => navigateToPage(findPageByPath('/About'))} onMouseEnter={() => setIsHovered(true)}
-                            onMouseLeave={() => setIsHovered(false)} size="large">Read More</Button>
+                            width: 'fit-content',
+                            color: themer.palette.primary.main,
+                            borderColor: themer.palette.primary.main,
+                        }} onClick={() => navigateToPage(findPageByPath('/About'))} onMouseEnter={() => setIsHovered(true)}
+                            onMouseLeave={() => setIsHovered(false)} size="large">{buttonText}</Button>
 
                     </div>
-
-
-
-
-
 
 
 

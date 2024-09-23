@@ -1,17 +1,27 @@
 import * as React from 'react';
 import { Box, Card, CardContent, Typography, CardMedia, useTheme, CardActions, Button, darken } from '@mui/material';
-import { Team } from '../sections/BlogSection';
 import { useState } from 'react';
 import { useNavigatorContext } from '../contexts/NavigateContext';
 import { useStyleContext } from '../contexts/StyleContext';
 
+export interface ShowcaseItem {
 
-interface TeamCardProp {
-    team: Team
+    title: string,
+    description: string,
+    image: string,
+    index: number,
+    context: string,
+    author: string,
+    date: string
+
+}
+
+interface ShowcaseCardProp {
+    showcaseItem: ShowcaseItem
 }
 
 
-export default function TeamCard({ team }: TeamCardProp) {
+export default function ShowcaseCard({ showcaseItem }: ShowcaseCardProp) {
 
     const { navigateToPage, findPageByPath } = useNavigatorContext();
 
@@ -21,17 +31,23 @@ export default function TeamCard({ team }: TeamCardProp) {
     const { themer } = useStyleContext();
     const [elevation, setElevation] = useState(0);
 
+    const handleCardClick = (index) => {
+        console.log(index)
+        navigateToPage(findPageByPath('/Article', index));
+    };
+
+
     return (
 
-        <Card elevation={elevation} onClick={() => navigateToPage(findPageByPath('/Blog'))} onMouseEnter={() => {setIsHovered(true); setElevation(5)}}
-        onMouseLeave={() => {setIsHovered(false); setElevation(0)}} key={team.index} sx={{ position: 'relative', height: { md: 400, xs: 300 }, cursor: isHovered? 'pointer': 'none' }}>
+        <Card elevation={elevation} onClick={() => handleCardClick(showcaseItem.index)} onMouseEnter={() => {setIsHovered(true); setElevation(5)}}
+        onMouseLeave={() => {setIsHovered(false); setElevation(0)}} key={showcaseItem.index} sx={{ position: 'relative', height: { md: 400, xs: 300 }, cursor: isHovered? 'pointer': 'none' }}>
 
             <CardMedia
                 component="img"
                 height="100%"
                 width='100%'
-                image={team.image}
-                alt={`Card ${team.index + 1}`}
+                image={showcaseItem.image}
+                alt={`Card ${showcaseItem.index + 1}`}
                 sx={{
                     opacity: 0.7,
                     transform: isHovered ? 'scale(1.1)' : 'scale(1)',
@@ -88,7 +104,7 @@ export default function TeamCard({ team }: TeamCardProp) {
                     }}>
                         <div style={{ display: 'flex', flexDirection: 'column', textAlign: 'center', gap: '7px', width: '80%' }}>
                             <Typography color={themer.palette.text.primary} variant="h4" component="div" fontFamily={'Libre Franklin , sans-serif'} >
-                                {team.title}
+                                {showcaseItem.title}
                             </Typography>
                             
                         </div>
@@ -98,7 +114,7 @@ export default function TeamCard({ team }: TeamCardProp) {
                                 color: themer.palette.primary.main,
                                
                                 borderColor: themer.palette.primary.main
-                            }} onClick={() => navigateToPage(findPageByPath('/Blog'))} onMouseEnter={() => setIsHovered(true)}
+                            }} onClick={() => handleCardClick(showcaseItem.index)} onMouseEnter={() => setIsHovered(true)}
                             onMouseLeave={() => setIsHovered(false)} size="large">Read More</Button>
                         
                     </div>

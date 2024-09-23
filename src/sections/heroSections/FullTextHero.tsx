@@ -14,6 +14,7 @@ import { styleContext, useStyleContext } from '../../contexts/StyleContext';
 import { Divider, Typography } from '@mui/material';
 import environment from '../../assets/images/environment3.jpeg'
 import { useNavigatorContext } from '../../contexts/NavigateContext';
+import { useLanguageContext } from '../../contexts/LanguageContext';
 
 
 interface HeroSectionProps {
@@ -24,14 +25,15 @@ interface HeroSectionProps {
 
 function HeroSection({ scrollTo }: HeroSectionProps) {
 
+    const { languages, setActiveLanguage, language } = useLanguageContext();
 
     const { themer } = useStyleContext();
 
     const { navigateToPage, findPageByPath } = useNavigatorContext();
 
 
-    const calculateLineLength = (wordLenght: number) => {
-        return wordLenght + wordLenght * 0.1
+    const calculateLineLength = (wordLength: number) => {
+        return wordLength + wordLength * 0.1
     }
 
     const [index, setIndex] = useState(0);
@@ -54,13 +56,12 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
                         <Grid  md={12} gap={2} display={'flex'} justifyContent={'center'} alignItems={'center'} direction={'column'} textAlign={'center'} >
 
                             <Grid md={12}>
-                                <Typography style={{ whiteSpace: 'pre-line', lineHeight: 1 }} fontFamily={'Kanit'} color={themer.palette.text.primary} variant='h1'>{'Premium Frankincense & Myrrh\nDirect from the Source'}</Typography>
+                                <Typography style={{ whiteSpace: 'pre-line', lineHeight: 1 }} fontFamily={'Kanit'} color={themer.palette.text.primary} variant='h1'>{language.file.home.hero.title}</Typography>
                             </Grid>
                             <Divider style={{ borderColor: 'white', height: 2, width: 350 }} orientation="horizontal" />
 
                             <Grid md={8} justifyContent={'center'} textAlign={'center'} >
-                                <Typography color={themer.palette.text.primary} variant='body1'>
-                                Connect directly with the source of premium wholesale frankincense and myrrh. Enhance your product line with our world-class resins. Act now to access wholesale pricing and benefit from our exceptional quality — secure your order today!                                </Typography>
+                                <Typography color={themer.palette.text.primary} variant='body1'>{language.file.home.hero.description}</Typography>
                             </Grid>
                         </Grid>
 
@@ -72,7 +73,7 @@ function HeroSection({ scrollTo }: HeroSectionProps) {
                                 '&:hover': {
                                     backgroundColor: darken('#FFFFFF', 0.1),
                                 },
-                            }} onClick={() => navigateToPage(findPageByPath('/Contact'))} size="large">Request qoute</Button>            
+                            }} onClick={() => navigateToPage(findPageByPath('/Contact'))} size="large">{language.file.home.hero.button}</Button>            
 
                         </Grid>
 

@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React, { ReactNode, useEffect, useMemo } from 'react';
 import '../styling/FadeIn.css';
 import useMediaQuery from '@mui/material/useMediaQuery';
 import { Box, Grid, Typography, useTheme } from "@mui/material";
@@ -65,27 +65,36 @@ function FadeIn({ direction, distance = '5', children, delay }: FadeInProps) {
   const [isVisible, setVisible] = React.useState(false);
 
   const domRef = React.useRef<HTMLDivElement>(null);
-  React.useEffect(() => {
+
+
+
+  useEffect(() => {
     const observer = new IntersectionObserver(entries => {
-      let counter = 0;
       entries.forEach(entry => {
-        console.log(counter++)
-
         if (entry.isIntersecting) {
-          setVisible(true)
-
+          setVisible(true);
         }
-
       });
     });
     if (domRef.current) { // Make sure to check if the ref is available before observing
       observer.observe(domRef.current);
     }
+    return () => observer.disconnect(); // Cleanup observer
   }, []);
+
+  
+  const computedStyle = useMemo(() => {
+    if (isVisible) {
+      return delay ? { ...style, transitionDelay: delay } : style;
+    } else {
+      return style[matchesMD ? direction : 'top'].isHidden;
+    }
+  }, [isVisible, delay, style, matchesMD, direction]);
+
   return (
     <div
       className={`fade-in-section ${isVisible ? 'is-visible' : ''}`}
-      style={isVisible ? delay ? { transitionDelay: delay } : {} : style[ matchesMD ? direction : 'top'].isHidden}
+      style={computedStyle}
       ref={domRef}
     >
       {children}

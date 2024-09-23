@@ -1,0 +1,64 @@
+{
+    "products": [
+        {
+            "Arabic": {
+                "title": "راتنج كارتيري",
+                "shortDescription": "مثالي للاستخدامات العطرية والطبية.",
+                "longDescription": "توفر شركة Majabe راتنج Boswellia Carterii عالي الجودة، والذي يتم حصاده من المناظر الطبيعية الوعرة في أرض الصومال. باستخدام تقنيات التقشير التقليدية، يعد هذا الراتينج العضوي مثاليًا للاستخدام في صناعة العطور ومستحضرات التجميل والعلاج بالروائح، وهو معروف بخصائصه الطبية وجودته الممتازة."
+            },
+            "English": {
+                "title": "Carterii Resin",
+                "shortDescription": "Perfect for perfumery and medicinal applications.",
+                "longDescription": "Majabe provides high-quality Boswellia Carterii resin, harvested from the rugged landscapes of Somaliland. Utilizing traditional striping techniques, this organic resin is ideal for use in perfumery, cosmetics, and aromatherapy, known for its medicinal properties and premium quality."
+            },
+            "images": [
+                "productFrankincense.jpg",
+                "remedy.jpg",
+                "frankincenseOil.jpg"
+            ],
+            "price": 20,
+            "minQuantity": 5,
+            "maxQuantity": 100
+        },
+        {
+            "Arabic": {
+                "title": "راتنج فريريانا",
+                "shortDescription": "مثالي للاستخدامات العناية بالبشرة والطقوسية.",
+                "longDescription": "تقدم شركة Majabe Essences راتنج Boswellia Frereana، الذي يتم حصاده من المناطق الأعلى في منطقة سناج، صوماليلاند. يتميز هذا الراتنج بخصائصه الفريدة، وهو أساسي للعلاج بالروائح والاستخدام الطقوسي، حيث يعزز صحة البشرة ويوفر فوائد مضادة للبكتيريا."
+            },
+            "English": {
+                "title": "Frereana Resin",
+                "shortDescription": "Ideal for skincare and ceremonial uses.",
+                "longDescription": "Majabe Essences offers Boswellia Frereana resin, harvested at higher elevations in the Sanaag region, Somaliland. Valued for its unique properties, this resin is essential for aromatherapy and ceremonial use, promoting enhanced skin health and offering antibacterial benefits."
+            },
+            "images": [
+                "productFrereana.jpg",
+                "remedy.jpg",
+                "frankincenseOil.jpg"
+            ],
+            "price": 20,
+            "minQuantity": 5,
+            "maxQuantity": 150
+        },
+        {
+            "Arabic": {
+                "title": "راتنج ساكرا",
+                "shortDescription": "مثالي للاستخدامات الطبية والعطرية.",
+                "longDescription": "تقدم شركة Majabe Essences راتنج Boswellia Sacra، الذي يتم حصاده من منطقة ساكرا، صوماليلاند. يتميز هذا الراتنج بخصائصه الطبية والعطرية الفريدة، وهو مثالي للاستخدام في العلاج بالروائح والطب البديل."
+            },
+            "English": {
+                "title": "Commiphora Myrrha",
+                "shortDescription": "Known for its healing properties and aromatic allure.",
+                "longDescription": "Majabe Essences presents Commiphora Myrrha, renowned for its rich, earthy aroma and extensive therapeutic uses. This myrrh combats bacteria, aids in skin recovery, and supports immune health, making it a versatile component in various health and beauty products."
+            },
+            "images": [
+                "productMyrr.jpg",
+                "remedy.jpg",
+                "frankincenseOil.jpg"
+            ],
+            "price": 20,
+            "minQuantity": 5,
+            "maxQuantity": 70
+        }
+    ]
+}

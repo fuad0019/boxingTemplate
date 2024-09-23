@@ -1,0 +1,85 @@
+{
+    "pages": {
+        "Home": "Home",
+        "About": "About",
+        "Products": "Products",
+        "Contact": "Contact",
+        "Blog": "Blog"
+    },
+    "home": {
+        "hero": {
+            "title": "Premium Frankincense & Myrrh\nDirect from the Source",
+            "description": "Connect directly with the source of premium wholesale frankincense and myrrh. Enhance your product line with our world-class resins. Act now to access wholesale pricing and benefit from our exceptional quality — secure your order today!",
+            "button": "Request Quote"
+        }
+    },
+    "about": {
+        "intro": {
+            "title": "About us",
+            "description": "Read about the story of Majabe"
+        },
+        "bufferSection": {
+            "title": "Family Owned Business",
+            "description": "Majabe is a family-centric frankincense seller. Although it is in the early phases of establishing itself as a company, it is rooted in tradition, having been owned by the family for centuries.",
+            "button": "Read More"
+        },
+        "detailSection": [
+            {
+                "title": "Our Story",
+                "description": "We are Somali-based company established in early 2000. We are coming with the passion and dedication our ancestors had producing Frankincense. We source top quality Frankincense and Myrrh from the Somaliland mountains, we are driven by our love for nature, passion and seeking to produce the best quality organic products for our customers.\n\nAt Majabe Essences, our mission is to produce the highest quality organic products by sourcing the finest resins from the mountains of Somaliland. We are driven by a love for nature and a passion for excellence. Our vision is to become a leading provider in the global market, recognized for our commitment to quality and sustainability. We strive to innovate while maintaining the traditional methods that make our products unique and valued around the world."
+            },
+            {
+                "title": "Core Values",
+                "description": "Our company is deeply committed to upholding key values that define our mission and guide our practices.\n\nQuality -- We ensure that every batch of frankincense meets the highest standards of excellence. From the cultivation process to the final product, we are meticulous in maintaining quality, so our customers receive nothing less than the finest frankincense available.\n\nDiversity -- At the heart of our product lies its unique ability to unite diverse cultures, religions, and traditions under a shared need. By fostering these connections, we strive to promote a more inclusive and harmonious world where differences are celebrated, and common ground is found. Our product becomes a bridge through the exchange of ideas, experiences, and the timeless scent of frankincense, bringing people together and encouraging understanding.\n\nSustainability -- We are committed to protecting the Boswellia trees and their environment. By adopting sustainable practices, we aim to ensure the long-term availability of this precious resource, respecting both the earth and the communities that depend"
+            }
+        ]
+    },
+    "products": {
+        "intro": {
+            "title": "Products",
+            "description": "Explore Our Premium Products of Organic Resins and Myrrha"
+        },
+        "productSection": {
+            "title": "Explore Our Premium Selection",
+            "description": "Dive into the world of Majabe Essences and discover the finest organic resins and oils sourced from the heart of Somaliland. Each of our products is a testament to tradition and quality, crafted to enrich your offerings.",
+            "button": "See More"
+        },
+        "productDetail": {
+            "quantityButtons": {
+                "increase": "Remove Quantity",
+                "decrease": "Add Quantity"
+            },
+            "requestButton": "Request Quote",
+            "amount": "Amount",
+            "unit": "Tonnes"
+        }
+    },
+    "contact": {
+        "intro": {
+            "title": "Contact us",
+            "description": "Request a quote or contact us for more information!"
+        },
+        "contactSection": {
+            "description": "Interested in learning more about our products or requesting a quote?\n\nContact us today to explore how our premium frankincense and myrrh can enhance your offerings. At Majabe Essences, we are committed to providing you with exceptional quality and service.\n\nReach out now to start a conversation about your wholesale needs!",
+            "title": "Contact Majabe Essence"
+        
+        },
+        "form": {
+            "title": "Form Submitted!",
+            "description": "Thank you for reaching out to us. We will get back to you shortly.",
+            "button": "Submit"
+        },
+        "Direct": "Direct Contact"
+    },
+    "blog": {
+        "intro": {
+            "title": "Blog",
+            "description": "Latest updates and Hand-picked resources."
+        },
+        "articleSection": {
+            "title": "Learn More",
+            "description": "Read these articels to learn more about the our product and it's benefits.",
+            "button": "View More"
+        }
+    }
+}

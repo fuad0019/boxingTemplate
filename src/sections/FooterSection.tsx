@@ -19,6 +19,17 @@ export default function FooterSection() {
 
     const { themer } = useStyleContext();
 
+    const [availablePages, setAvailablePages] = React.useState([])
+
+    React.useEffect(() => {
+
+
+        setAvailablePages(pages.filter(page => page.title !== "Article"))
+
+
+    }, [])
+
+
     function Copyright() {
         return (
             <Typography variant="body2" color={'white'}>
@@ -32,41 +43,7 @@ export default function FooterSection() {
         );
     }
 
-    const footerInfoList = [
-        {
-            title: '',
-            content: (
-                <div style={{ color: 'white' }} >
-                    <Typography>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-
-                </div>
-
-            )
-        },
-        {
-            title: '',
-            content: (
-                <div style={{ color: 'white' }} >
-                    <Typography variant='body1'>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-                    <Typography>
-                    </Typography>
-
-                </div>
-            )
-        }
-    ]
+   
 
     return (
         <Box component="footer" sx={{ backgroundColor: 'black', paddingX: 20, paddingY: 10 }}>
@@ -96,14 +73,14 @@ export default function FooterSection() {
                 <Grid item xs={12} sm={6} md={2} gap={20}>
                     <Stack spacing={3}>
 
-                        <Typography variant="h6"  gutterBottom>Information</Typography>
-                        <Link sx={{textDecoration: 'underline', cursor: 'pointer'}}
+                        <Typography variant="h6" gutterBottom>Information</Typography>
+                        <Link sx={{ textDecoration: 'underline', cursor: 'pointer' }}
                             onClick={() => { navigateToPage(findPageByPath('/Contact')) }}
 
                         >
-                           Contact
+                            Contact
                         </Link>
-                     
+
                     </Stack>
 
                 </Grid>
@@ -111,8 +88,8 @@ export default function FooterSection() {
                     <Stack spacing={3}>
 
                         <Typography variant="h6" gutterBottom>Menu</Typography>
-                        {pages.filter((page) => page.title != 'Contact').map((page) => (
-                            <Link sx={{textDecoration: 'underline', cursor: 'pointer'}}
+                        {availablePages.filter((page) => page.title != 'Contact').map((page) => (
+                            <Link sx={{ textDecoration: 'underline', cursor: 'pointer' }}
                                 onClick={() => { navigateToPage(page) }}
 
                             >
@@ -132,7 +109,6 @@ export default function FooterSection() {
                             <Copyright />
                         </Stack>
                     </Stack>
-
                 </Grid>
             </Grid>
         </Box>

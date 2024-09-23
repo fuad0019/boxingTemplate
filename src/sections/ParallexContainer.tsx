@@ -1,7 +1,7 @@
 import { Box, Button, Grid, Typography, darken, useTheme, lighten } from "@mui/material"
 import PositionCard from "../components/PositionsCards"
 import FadeIn from "../components/FadeIn"
-import TeamCard from "../components/TeamCard"
+import TeamCard from "../components/ShowcaseCard"
 import frankincense from '../assets/images/frankincense2.jpg'
 import { useNavigate } from "react-router-dom"
 import { useState } from "react"
